@@ -47,6 +47,6 @@ export type StudioAsset = {
   imageUrl: string; downloadUrl: string; referenceAssetId: string | null;
 };
 export type StudioJob = {
-  id: string; status: JobStatus; runId: string | null; createdAt: string;
+  id: string; requestId: string; status: JobStatus; runId: string | null; createdAt: string;
   error: { code: string; message: string; uncertain: boolean } | null; asset: StudioAsset | null;
 };

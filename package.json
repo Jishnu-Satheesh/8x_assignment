@@ -9,7 +9,7 @@
     "start": "next start --hostname 0.0.0.0",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
-    "test": "node src/lib/inspiration.test.ts && node src/lib/studio/contracts.test.ts && node --conditions=react-server src/lib/studio/provider.test.ts && node src/lib/studio/image-processing.test.ts && node src/lib/studio/durable/store.test.ts && node src/lib/studio/durable/worker.test.ts && node src/lib/studio/durable/request.test.ts",
+    "test": "node src/lib/inspiration.test.ts && node src/lib/studio/contracts.test.ts && node --conditions=react-server src/lib/studio/provider.test.ts && node src/lib/studio/image-processing.test.ts && node src/lib/studio/durable/store.test.ts && node src/lib/studio/durable/worker.test.ts && node src/lib/studio/durable/request.test.ts && node --conditions=react-server src/lib/studio/durable/dispatch.test.ts",
     "test:db": "node --env-file=.env.local scripts/studio-db.mjs test",
     "trigger:dev": "node --env-file=.env.local scripts/studio-worker.mjs"
   },

@@ -6,5 +6,5 @@ export function presentAsset(asset: AssetRow): StudioAsset {
 }
 export function presentJob(job: JobRow, asset: AssetRow | null): StudioJob {
   const completed = job.status === "completed" && asset?.ready && asset.generation_job_id === job.id;
-  return { id: job.id, status: job.status === "completed" && !completed ? "saving" : job.status, runId: job.trigger_run_id ?? job.execution_run_id, createdAt: job.created_at, error: job.status === "failed" ? { code: job.error_code ?? "GENERATION_FAILED", message: job.error_message ?? "This image could not be completed.", uncertain: job.uncertain } : null, asset: completed ? presentAsset(asset) : null };
+  return { id: job.id, requestId: job.request_id, status: job.status === "completed" && !completed ? "saving" : job.status, runId: job.trigger_run_id ?? job.execution_run_id, createdAt: job.created_at, error: job.status === "failed" ? { code: job.error_code ?? "GENERATION_FAILED", message: job.error_message ?? "This image could not be completed.", uncertain: job.uncertain } : null, asset: completed ? presentAsset(asset) : null };
 }

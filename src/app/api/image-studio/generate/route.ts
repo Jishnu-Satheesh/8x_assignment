@@ -1,36 +1,76 @@
-import { StudioError, validateRequest } from "@/lib/studio/contracts";
-import { runGeneration } from "@/lib/studio/service";
+import { requireUser } from "@/lib/supabase/server";
+import { StudioError } from "@/lib/studio/contracts";
+import { configuration } from "@/lib/studio/durable/availability";
+import { dispatchJob } from "@/lib/studio/durable/dispatch";
+import {
+  abuseKey,
+  checkChallenge,
+  errorResponse,
+  privateHeaders,
+  readJson,
+  sameOrigin,
+} from "@/lib/studio/durable/http";
+import { presentJob } from "@/lib/studio/durable/presentation";
+import { parseGeneration } from "@/lib/studio/durable/request";
+import { createStudioStore } from "@/lib/studio/durable/store";
 
 export const runtime = "nodejs";
-export const maxDuration = 150;
-const headers = { "Cache-Control": "no-store", "X-Content-Type-Options": "nosniff" };
+export const maxDuration = 30;
 export async function POST(request: Request) {
   try {
-    const origin = request.headers.get("origin");
-    // Next's internal URL can use the bind address (0.0.0.0), while the browser
-    // uses localhost. Host is the actual HTTP authority; a configured origin
-    // takes precedence behind a TLS reverse proxy.
-    const expectedOrigin = process.env.STUDIO_ORIGIN || `${new URL(request.url).protocol}//${request.headers.get("host")}`;
-    if (!origin || origin !== expectedOrigin || request.headers.get("sec-fetch-site") === "cross-site") throw new StudioError("INVALID_ORIGIN", "Generate from this workspace page.", 403);
-    if (!request.headers.get("content-type")?.startsWith("application/json")) throw new StudioError("INVALID_INPUT", "Use the Image Studio form.", 415);
-    const reader = request.body?.getReader();
-    if (!reader) throw new StudioError("INVALID_INPUT", "Enter your generation settings.");
-    const chunks: Uint8Array[] = [];
-    let size = 0;
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      size += value.length;
-      if (size > 7_100_000) { await reader.cancel(); throw new StudioError("TOO_LARGE", "Use a reference image up to 5 MB.", 413); }
-      chunks.push(value);
+    sameOrigin(request);
+    const { user } = await requireUser();
+    const value = parseGeneration(await readJson(request));
+    const state = configuration();
+    if (!state.available)
+      throw new StudioError(
+        "NOT_CONFIGURED",
+        state.reason ?? "Generation is unavailable.",
+        503,
+      );
+    const store = createStudioStore();
+    let input = value.input;
+    if (value.regenerateAssetId) {
+      const original = await store.findAsset(value.regenerateAssetId, user.id);
+      if (
+        !original?.ready ||
+        original.kind !== "generated" ||
+        !original.model ||
+        !original.aspect_ratio ||
+        !original.resolution
+      )
+        throw new StudioError(
+          "NOT_FOUND",
+          "The original image is not available in this workspace.",
+          404,
+        );
+      input = {
+        requestId: value.requestId,
+        model: original.model,
+        prompt: original.prompt ?? "",
+        aspectRatio: original.aspect_ratio,
+        resolution: original.resolution,
+        referenceAssetId: original.reference_asset_id,
+      };
     }
-    let data: unknown;
-    try { data = JSON.parse(Buffer.concat(chunks).toString("utf8")); } catch { throw new StudioError("INVALID_INPUT", "Check your generation settings."); }
-    const input = validateRequest(data);
-    const asset = await runGeneration(input);
-    return Response.json({ job: { id: input.requestId, status: "succeeded", asset } }, { headers });
-  } catch (error) {
-    const safe = error instanceof StudioError ? error : new StudioError("UNAVAILABLE", "Image generation is unavailable. Please try later.", 503);
-    return Response.json({ error: { code: safe.code, message: safe.message } }, { status: safe.status, headers: { ...headers, ...(safe.status === 429 ? { "Retry-After": "10" } : {}) } });
+    if (!input || !state.enabledModels.includes(input.model))
+      throw new StudioError(
+        "MODEL_UNAVAILABLE",
+        "This image model is unavailable.",
+      );
+    await checkChallenge(value.challengeToken);
+    const reserved = await store.reserveJob(user.id, input, abuseKey(request));
+    const job = reserved.created
+      ? await dispatchJob(reserved.job, store)
+      : reserved.job;
+    const asset = job.asset_id
+      ? await store.findAsset(job.asset_id, user.id)
+      : null;
+    return Response.json(
+      { job: presentJob(job, asset) },
+      { status: 202, headers: privateHeaders },
+    );
+  } catch (e) {
+    return errorResponse(e);
   }
 }

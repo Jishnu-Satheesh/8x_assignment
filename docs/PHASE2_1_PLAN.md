@@ -1,6 +1,6 @@
 # Phase 2.1 — Durable Image Generation
 
-Status: preflight/design complete; implementation awaits the assignment's Supabase/Trigger development project identifiers and configuration. Phase 2's approved layout and Gemini integration remain intact. No deployment, remote migration, account creation, merge, or paid request has been performed for Phase 2.1.
+Status: implementation in progress. The candidate configured dedicated staging Supabase and Trigger development credentials, authorized CLI migrations against staging and current-key local paid tests, and enabled anonymous sign-ins. No deployment, merge or push is authorized. Phase 2’s approved layout and Gemini adapter are preserved.
 
 ## Preflight
 
@@ -70,12 +70,12 @@ The browser receives no Supabase secret/service-role key, Trigger secret, Gemini
 ## Implementation and acceptance gates
 
 - [x] Inspect current code/capture/branch, official docs and environment names; identify missing target configuration.
-- [ ] Confirm the new Supabase project/account, Trigger project/environment and development schema-application method. Do not use `lunes-ai-staging` or guess identifiers.
-- [ ] Confirm the replacement Gemini credential is configured and the captured credential revoked. The candidate confirmed rotation, but a value-free comparison found `.env.local` still contains the previously captured value. Replace it directly in the ignored file before any paid test; do not infer that the local runtime already uses the replacement.
+- [x] Dedicated staging configuration verified by value-free URL/project matching. Supabase CLI migrations authorized; unrelated connected project untouched.
+- [x] Candidate explicitly authorizes the current Gemini credential for local paid tests until Vercel deployment. The still-sensitive raw capture stays local and uncommitted. Rotation/revocation remains a publication/deployment gate.
 - [ ] Implement migrations, private policies and atomic functions; prove cross-user and unauthenticated denial, duplicate/concurrent reservation limits and retained uncertain accounting against the designated development database.
 - [ ] Implement cookie auth, bounded uploads, asynchronous API, one worker and persistence recovery. Verify stale dispatch, duplicate task, worker-crash boundary and independent save retries using mocks rather than repeated paid calls.
 - [ ] Recover active/completed jobs and full metadata after reload/navigation; download, regenerate original settings/reference, and reuse an owned generated asset.
-- [ ] Run typecheck, lint, build, focused unit/integration checks and targeted real Chrome desktop/mobile/Explore regression. Plan at most two small real generations initially; justify any additional call by an uncovered acceptance criterion. Never use the previously exposed credential.
+- [ ] Run typecheck, lint, build, focused unit/integration checks and targeted real Chrome desktop/mobile/Explore regression. Plan at most two small real generations initially; justify any additional call by an uncovered acceptance criterion. Use the current credential only under the candidate’s explicit local-testing authorization. Never publish the sensitive raw capture.
 - [ ] Document exactly which SDK, database, worker, Storage, browser and failure checks ran. Public readiness remains **not qualified** until actual hosted deployment/auth/CAPTCHA/worker checks pass and deployment is explicitly authorized.
 - [ ] Commit safe increments and available safe capture evidence; no push, merge, remote worker deployment or production enablement without authorization. Stop for Phase 2.1 visual approval.
 
