@@ -16,7 +16,7 @@ const child = spawn(
     "--env-file",
     ".env.local",
     "--profile",
-    process.env.TRIGGER_PROFILE || "8x-assignment",
+    process.env.TRIGGER_PROFILE || "default",
     "--max-concurrent-runs",
     "2",
     "--skip-update-check",

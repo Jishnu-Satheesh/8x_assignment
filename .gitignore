@@ -13,3 +13,4 @@ coverage/
 
 # Trigger local build artifacts
 .trigger/
+supabase/.temp/

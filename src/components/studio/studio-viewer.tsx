@@ -7,6 +7,11 @@ import type { StudioAsset, JobStatus } from "@/lib/studio/durable/types";
 import { MODELS } from "@/lib/studio/contracts";
 
 const phases = {
+  submitting: {
+    title: "Sending your idea",
+    detail: "Confirming your request before it joins the queue.",
+    label: "Submitting",
+  },
   loading: {
     title: "Opening your workspace",
     detail: "Finding your saved images and active jobs.",
@@ -46,7 +51,7 @@ export function StudioViewer({
 }: {
   asset?: StudioAsset;
   busy: boolean;
-  stage?: JobStatus | "loading";
+  stage?: JobStatus | "loading" | "submitting";
   connectionLost: boolean;
   onRegenerate: (asset: StudioAsset) => void;
   onReference: (asset: StudioAsset) => void;
@@ -128,13 +133,15 @@ export function StudioViewer({
                 : phase.detail}
             </p>
             <span>{connectionLost ? "Reconnecting" : phase.label}</span>
-            <ol className="studio-stages" aria-label="Generation stages">
-              {["queued", "preparing", "generating", "saving"].map((s) => (
-                <li key={s} aria-current={stage === s ? "step" : undefined}>
-                  {s}
-                </li>
-              ))}
-            </ol>
+            {stage !== "loading" && stage !== "submitting" && (
+              <ol className="studio-stages" aria-label="Generation stages">
+                {["queued", "preparing", "generating", "saving"].map((s) => (
+                  <li key={s} aria-current={stage === s ? "step" : undefined}>
+                    {s}
+                  </li>
+                ))}
+              </ol>
+            )}
           </div>
         )}
       </div>

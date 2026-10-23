@@ -597,7 +597,7 @@ export function ImageStudio({
                   : "Start guest workspace"}
             </Button>
           )}
-          {(connectionLost || pending) && (
+          {(connectionLost || (pending && !dispatching)) && (
             <Button
               variant="outline"
               type="button"
@@ -612,7 +612,7 @@ export function ImageStudio({
               Check saved jobs
             </Button>
           )}
-          {pending && (
+          {pending && !dispatching && (
             <Button
               variant="outline"
               type="button"
@@ -663,7 +663,7 @@ export function ImageStudio({
         <StudioViewer
           asset={selected}
           busy={busy || booting}
-          stage={booting ? "loading" : dispatching ? "queued" : job?.status}
+          stage={booting ? "loading" : dispatching ? "submitting" : job?.status}
           connectionLost={connectionLost}
           onRegenerate={(asset) => void generate(asset)}
           onReference={useReference}
