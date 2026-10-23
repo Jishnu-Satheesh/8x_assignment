@@ -5,7 +5,7 @@ The candidate approved the two-pane UX and Gemini model direction on 2026-10-23.
 ## Files and contracts
 
 - `src/components/workspace/workspace-shell.tsx`: route-aware Explore/Image Studio links; enter Studio with 72px rail, retain manual expansion and mobile drawer.
-- `src/app/image-studio/{page,loading}.tsx`, `src/components/studio/*`, `src/app/studio.css`: 336px desktop controls, prompt, one optional reference, verified model/options, anchored Generate; responsive viewer, download, regenerate, use as reference, bounded in-memory session history.
+- `src/app/image-studio/{page,loading}.tsx`, `src/components/studio/*`, `src/app/studio.css`: full-width Studio with 400px large-desktop / 360px medium-screen controls (candidate's width refinement), prompt, one optional reference, verified model/options, anchored Generate; responsive viewer, download, regenerate, use as reference, bounded in-memory session history.
 - `src/lib/studio/contracts.ts`: allowlisted model/settings, discriminated generation job states, generated asset provenance (`ai-generated`, provider, actual model, prompt/settings, timestamp, reference lineage). Source Explore photographs remain source inspiration. No Assets/Brand DNA/feedback implementation.
 - `src/lib/studio/{provider,usage,service}.ts` and `src/app/api/image-studio/*`: server-only credentials and provider calls, strict validation and bounded uploads/output; reserve attempts durably before dispatch; no automatic retries; safe public errors.
 - `scripts/verify_image_models.mjs`: two explicit low-resolution real canaries, safe metadata only. Enable only successfully verified exact stable IDs.

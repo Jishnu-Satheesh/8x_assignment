@@ -4,7 +4,7 @@ Status: implementation verified locally; **candidate visual approval pending**. 
 
 ## Decisions
 
-- Reused Next.js App Router, Radix/shadcn primitives, existing fonts and semantic graphite/coral tokens. Desktop controls are 336px wide, scroll independently, and keep Generate visible. Studio defaults to a 72px global rail; Explore retains expanded grouped navigation. Mobile uses the existing accessible drawer and a stacked workspace.
+- Reused Next.js App Router, Radix/shadcn primitives, existing fonts and semantic graphite/coral tokens. After candidate review, Studio fills the available workspace width, with 400px controls on large desktops and 360px at medium widths. Controls scroll independently and keep Generate visible on desktop. Studio defaults to a 72px global rail; Explore retains expanded grouped navigation. Mobile uses the existing accessible drawer and a stacked workspace.
 - Direct Google access through pinned `ai@7.0.150` / `@ai-sdk/google@4.0.104`; no Gateway or additional provider. Installed source forwards references, aspect ratio and resolution correctly. `generateText` supplies the final image and actual response model metadata. An official Google SDK fallback was unnecessary.
 - Supported stable IDs: `gemini-3.1-flash-image` (default Nano Banana 2), `gemini-3-pro-image` (Nano Banana Pro). Only successful canaries enable models. No preview aliases, video models, ignored seed controls, or fake integrations.
 - Generated asset/job contracts preserve AI provenance, actual model, prompt/settings, dimensions, creation time, job ID and reference lineage. Generated-reference IDs are checked against recorded content hashes. Explore imagery stays explicitly source photography.
@@ -16,7 +16,7 @@ Status: implementation verified locally; **candidate visual approval pending**. 
 | TypeScript, lint, Webpack production build | Pass |
 | Focused Node tests | 13 passing: Explore filtering; Studio request validation; durable cap/concurrency/duplicates/throttling/corruption; completion contention; exact SDK model/settings/reference serialization and safe blocked/429 handling |
 | Real Chrome DevTools | 41 recorded checks pass in `phase2-browser-results.json` |
-| Viewports | 1440×900, 1024×768, 768×1024, 390×844; desktop controls 336px, desktop rail 72→252→72, tablet/mobile drawer 280px; no horizontal overflow |
+| Initial verification viewports | 1440×900, 1024×768, 768×1024, 390×844; initial controls 336px, desktop rail 72→252→72, tablet/mobile drawer 280px; no horizontal overflow. The width refinement below supersedes the original pane measurements. |
 | Keyboard/focus | Real typing in prompt, native model/options controls, validation focuses prompt, drawer Tab/Escape/focus return, keyboard Enter on Regenerate, Explore preview Escape/focus return |
 | Generation journey | Real output from each model; uploaded reference; generated image reused with verified lineage; session history selection; Regenerate retained original prompt/model/options/reference after draft changed |
 | Downloads | Actual JPEG files from both model outputs saved to Downloads; SHA-256 matched the server's generated-asset records |
@@ -53,6 +53,16 @@ Layout and generation paths had no Chrome console errors/warnings. Negative test
 - The pasted credential must be rotated. Its raw capture must remain unchanged locally and must not be staged/pushed. This prevents committing that session's capture alongside the feature. Other capture setup and historical logs remain tracked. No capture system changes were made.
 
 ## Review artifacts
+
+### Candidate width refinement — 2026-10-23
+
+The candidate requested more workspace and controls width after visual review. At 1920px, the original Studio used 1480px of the 1848px available beside the rail. Studio now uses all 1848px; controls increase from 336px to 400px and the right workspace grows from 1144px to 1448px. Controls are 360px at 768–1279px; mobile remains stacked. The prompt hint can use its available row width instead of wrapping inside a fixed 160px cap. The loading layout shares the controls-width token. Explore keeps its 1480px editorial maximum.
+
+Typecheck, lint and production build pass. Standalone typecheck was rerun after the build regenerated `.next/types`; the first concurrent run encountered those generated files being replaced, requiring no application change. Sixteen targeted real Chrome checks pass at 1920×1080, 1440×900, 1024×768, 768×1024 and 390×844, including expanded navigation at 1024px, visible desktop Generate, one-line model descriptions/hint, no overflow, no missing images, no console errors/warnings, and Explore's retained width. Evidence: [width QA](phase2-width-qa.json). No new unit tests or generation requests were needed for this CSS change; provider usage is unchanged. The earlier generation screenshots and 41-check report document the original end-to-end verification.
+
+- [Revised wide desktop](screenshots/studio-width-1920x1080.png)
+- [Revised desktop](screenshots/studio-width-1440x900.png)
+- [Revised mobile](screenshots/studio-width-390x844.png)
 
 - [Desktop empty workspace](screenshots/studio-empty-1440x900.png)
 - [Desktop generated result](screenshots/studio-generated-1440x900.png)

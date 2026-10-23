@@ -12,29 +12,29 @@ This is the source of truth for the creative workspace. The candidate's Phase 1 
 
 ## Semantic colors
 
-| Token | Value |
-| --- | --- |
-| background | #0D0F12 |
-| foreground | #F5F5F2 |
-| sidebar | #101216 |
-| sidebar-foreground | #F5F5F2 |
-| card | #171A1F |
-| card-foreground | #F5F5F2 |
-| popover | #1D2128 |
-| popover-foreground | #F5F5F2 |
-| secondary / muted | #22262D |
-| secondary-foreground | #F5F5F2 |
-| muted-foreground | #B0B5C0 |
-| border / input | #30343C |
-| primary / sidebar-primary | #F6A17D |
+| Token                                           | Value   |
+| ----------------------------------------------- | ------- |
+| background                                      | #0D0F12 |
+| foreground                                      | #F5F5F2 |
+| sidebar                                         | #101216 |
+| sidebar-foreground                              | #F5F5F2 |
+| card                                            | #171A1F |
+| card-foreground                                 | #F5F5F2 |
+| popover                                         | #1D2128 |
+| popover-foreground                              | #F5F5F2 |
+| secondary / muted                               | #22262D |
+| secondary-foreground                            | #F5F5F2 |
+| muted-foreground                                | #B0B5C0 |
+| border / input                                  | #30343C |
+| primary / sidebar-primary                       | #F6A17D |
 | primary-foreground / sidebar-primary-foreground | #21130F |
-| accent / sidebar-accent | #2A2E36 |
-| accent-foreground / sidebar-accent-foreground | #F5F5F2 |
-| ring / sidebar-ring | #FFB494 |
-| sidebar-border | #30343C |
-| destructive | #FF8187 |
-| success | #78D6AF |
-| warning | #EAC47F |
+| accent / sidebar-accent                         | #2A2E36 |
+| accent-foreground / sidebar-accent-foreground   | #F5F5F2 |
+| ring / sidebar-ring                             | #FFB494 |
+| sidebar-border                                  | #30343C |
+| destructive                                     | #FF8187 |
+| success                                         | #78D6AF |
+| warning                                         | #EAC47F |
 
 Amber chart tokens remain preset configuration only; Phase 1 contains no charts. Image scrims and subtle surfaces derive from semantic tokens with opacity.
 
@@ -42,19 +42,19 @@ Amber chart tokens remain preset configuration only; Phase 1 contains no charts.
 
 Manrope is the UI/body family; Space Grotesk is the heading family. Self-host font files through the application so runtime rendering does not depend on third-party font requests.
 
-| Role | Size / line height | Weight |
-| --- | --- | --- |
-| Page headline | 36 / 42 px; mobile 28 / 34 px | 600 |
-| Section heading | 22 / 28 px | 600 |
-| Card heading | 16 / 24 px | 600 |
-| Navigation / body | 14 / 22 px | 500 / 400 |
-| Supporting | 13 / 20 px | 400 |
-| Overline | 12 / 16 px | 500 |
+| Role              | Size / line height            | Weight    |
+| ----------------- | ----------------------------- | --------- |
+| Page headline     | 36 / 42 px; mobile 28 / 34 px | 600       |
+| Section heading   | 22 / 28 px                    | 600       |
+| Card heading      | 16 / 24 px                    | 600       |
+| Navigation / body | 14 / 22 px                    | 500 / 400 |
+| Supporting        | 13 / 20 px                    | 400       |
+| Overline          | 12 / 16 px                    | 500       |
 
 ## Layout and geometry
 
 - Spacing scale: **4, 8, 12, 16, 24, 32, 40, 48, 64 px**. Use named component classes and shared Tailwind utilities based on this scale.
-- Main content maximum width: **1480 px**.
+- Explore content maximum width: **1480 px**. Image Studio fills the available workspace width; its controls pane is **400 px at 1280 px and above**, **360 px at 768–1279 px**, and full-width in the stacked mobile layout. This is the candidate-approved Phase 2 width refinement.
 - Page padding: **32 px desktop**, **24 px tablet**, **16 px mobile**.
 - Sidebar: **252 px expanded**, **72 px collapsed**, **280 px mobile drawer**.
 - Topbar: **64 px**.
