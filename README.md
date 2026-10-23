@@ -1,10 +1,10 @@
 # Higgsfield-inspired creative workspace
 
-Phase 1 builds a calmer Explore experience: grouped navigation, an editorial starting point, three intent cards, and a small searchable collection with useful previews. The candidate approved the visual direction; acceptance of the working app remains pending manual review.
+Explore provides grouped navigation and a curated searchable collection. Image Studio adds real Gemini generation in a two-pane creative workspace. Phase 1 was approved; Phase 2 awaits candidate visual approval.
 
 ## Run locally
 
-Use Node **22.18 or newer**. The verified environment uses Node 22.19.0 and npm 10.9.3. No API keys or environment variables are required.
+Use Node **22.18 or newer**. The verified environment uses Node 22.19.0 and npm 10.9.3. Explore needs no credentials. For Image Studio, put `GOOGLE_GENERATIVE_AI_API_KEY` directly in ignored `.env.local`; never paste it into agent chat. See `.env.example` for non-secret configuration names.
 
 ```bash
 rtk proxy npm ci
@@ -25,7 +25,15 @@ The production build uses Next's supported Webpack option. In this managed envir
 
 ## Product boundaries
 
-Explore is the working destination. Image Studio, Cinematic Studio, My Assets, and Brand DNA are visibly marked **Soon**. The local collection supports search, category filters, resetting results, and accessible previews with light, composition, color, and source information. The photographs are inspiration, not generated results. This phase has no authentication, billing, generation, database, worker, or model integration.
+Explore and Image Studio work. Cinematic Studio, My Assets, and Brand DNA remain **Soon**. Explore photographs are attributed source inspiration. Studio results are explicitly AI-generated; session history holds up to six images within a 32 MB data-URL budget and clears on reload or leaving Studio. Download images to keep them. No accounts, billing, asset library, Brand DNA, database, worker, video, or additional providers are implemented.
+
+Studio defaults to Nano Banana 2 (`gemini-3.1-flash-image`) and also supports Nano Banana Pro (`gemini-3-pro-image`). Exact stable IDs passed real canaries; no preview aliases. Five supported aspect ratios are offered. Flash supports 512px/1K/2K/4K; Pro supports 1K/2K/4K. Higher resolutions were not used in QA. One image and one optional reference per request; references are decoded, bounded and normalized server-side. Regenerate uses the selected result's original settings/reference.
+
+### Generation allowance and deployment
+
+Each installation has a hard maximum of **20 dispatched attempts**, including failures and unknown outcomes, recorded under ignored `.studio-data/usage.json`. The allowance does not reset automatically. Only one generation runs at a time, with at most three starts per minute and at least ten seconds between starts. Requests have unique IDs, output/token/byte bounds and a 120-second provider deadline. There are no automatic retries.
+
+Production generation fails closed unless `STUDIO_DURABLE_SINGLE_HOST=true` and an absolute `STUDIO_DATA_DIR` points to a persistent directory shared by all requests on **one Node host**. Preserve this ledger across releases/restarts. Configure exact `STUDIO_ORIGIN` behind a TLS reverse proxy. Vercel/AWS Lambda generation is disabled: a local file ledger is not a distributed/serverless safeguard. No public deployment is part of this assignment phase. A stale filesystem lock or corrupt ledger blocks generation; inspect pending jobs and reconcile with provider usage before an owner repairs it. Do not delete the ledger to silently reset spending.
 
 ## Project map
 
@@ -34,6 +42,7 @@ Explore is the working destination. Image Studio, Cinematic Studio, My Assets, a
 - `src/components/workspace/`: desktop navigation and mobile drawer.
 - `src/components/explore/`: editorial entry, search/filter collection, robust images, and previews.
 - `src/lib/inspiration.ts`: the typed local collection and deterministic search/filter helper.
+- `src/components/studio/`, `src/lib/studio/`, `src/app/api/image-studio/`: the complete generation journey, contracts, direct AI SDK Google adapter, and durable safeguard.
 - `public/`: local source photographs, WOFF2 fonts, and font licenses.
 - [Design system](docs/DESIGN_SYSTEM.md), [implementation plan](docs/PHASE1_PLAN.md), [asset provenance](docs/ASSET_SOURCES.md), and [QA report](docs/PHASE1_QA.md).
 
@@ -50,7 +59,10 @@ rtk proxy python3 scripts/chrome_mcp.py server
 ```
 
 ```bash
-rtk proxy python3 scripts/phase1_browser_qa.py
+rtk proxy python3 scripts/phase2_browser_qa.py --layout
+rtk proxy python3 scripts/phase2_browser_qa.py --regression
 ```
 
-The browser script saves its actual measurements and checks in `docs/phase1-browser-results.json` and screenshots under `docs/screenshots/`. It requires the local Chrome installation and network access for the on-demand MCP CLI. The QA report distinguishes tested behavior from states not naturally encountered in this static phase.
+The Phase 2 script targets page 2 in the bridge and saves measurements to `docs/phase2-browser-results.json`. `--journey` spends three real generations; `--mobile-generation` spends one 512px generation. Do not rerun these as routine checks. `scripts/verify_image_models.mjs` is also an explicit paid test (one request per model), run with `node --env-file=.env.local`. It writes only safe metadata and ignored local image files. The [Phase 2 QA report](docs/PHASE2_QA.md) records actual calls and limitations.
+
+A credential was pasted into this conversation. Its automatic raw log remains untouched locally and must not be staged or pushed. The credential must be rotated; replacement values belong directly in `.env.local`. This exception is documented in `docs/PHASE2_PLAN.md` and the QA report; do not sanitize the original capture to make it publishable.

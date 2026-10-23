@@ -47,7 +47,8 @@ export async function runGeneration(input: GenerationInput): Promise<GeneratedAs
       dataUrl: `data:${result.mediaType};base64,${Buffer.from(result.bytes).toString("base64")}`,
       ...(input.reference ? { reference: { name: input.reference.name, ...(input.reference.assetId ? { assetId: input.reference.assetId } : {}), sha256: referenceHash! } } : {}),
     };
-    await finishAttempt(dir, input.requestId, "succeeded", { id, sha256: digest(result.bytes) });
+    asset.referenceReusable = await finishAttempt(dir, input.requestId, "succeeded", { id, sha256: digest(result.bytes) });
+    if (!asset.referenceReusable) console.error("studio_completion_index_unavailable", { jobId: input.requestId });
     return asset;
   } catch (error) {
     // Reservation is never refunded, including unknown/timeout outcomes. No replay.

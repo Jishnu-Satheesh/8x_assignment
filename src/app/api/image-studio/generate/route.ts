@@ -7,7 +7,11 @@ const headers = { "Cache-Control": "no-store", "X-Content-Type-Options": "nosnif
 export async function POST(request: Request) {
   try {
     const origin = request.headers.get("origin");
-    if (!origin || origin !== new URL(request.url).origin || request.headers.get("sec-fetch-site") === "cross-site") throw new StudioError("INVALID_ORIGIN", "Generate from this workspace page.", 403);
+    // Next's internal URL can use the bind address (0.0.0.0), while the browser
+    // uses localhost. Host is the actual HTTP authority; a configured origin
+    // takes precedence behind a TLS reverse proxy.
+    const expectedOrigin = process.env.STUDIO_ORIGIN || `${new URL(request.url).protocol}//${request.headers.get("host")}`;
+    if (!origin || origin !== expectedOrigin || request.headers.get("sec-fetch-site") === "cross-site") throw new StudioError("INVALID_ORIGIN", "Generate from this workspace page.", 403);
     if (!request.headers.get("content-type")?.startsWith("application/json")) throw new StudioError("INVALID_INPUT", "Use the Image Studio form.", 415);
     const reader = request.body?.getReader();
     if (!reader) throw new StudioError("INVALID_INPUT", "Enter your generation settings.");

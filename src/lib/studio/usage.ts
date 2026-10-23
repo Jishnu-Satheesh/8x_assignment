@@ -1,6 +1,7 @@
 import "server-only";
 import { mkdir, open, readFile, rename, rmdir } from "node:fs/promises";
 import { join } from "node:path";
+import { setTimeout as delay } from "node:timers/promises";
 import { StudioError } from "./contracts.ts";
 
 type Attempt = { id: string; at: number; status: "processing" | "succeeded" | "failed" | "uncertain"; assetId?: string; sha256?: string };
@@ -8,7 +9,15 @@ type Ledger = { version: 1; attempts: Attempt[] };
 async function transact<T>(dir: string, action: (ledger: Ledger) => T): Promise<T> {
   await mkdir(dir, { recursive: true, mode: 0o700 });
   const lock = join(dir, "usage.lock");
-  try { await mkdir(lock); } catch { throw new StudioError("BUSY", "Please wait while another request finishes.", 429); }
+  // Retry only local lock acquisition, never a provider request. A short-lived
+  // reservation/lineage read must not prevent completion bookkeeping.
+  const deadline = Date.now() + 2000;
+  while (true) {
+    try { await mkdir(lock); break; } catch (error) {
+      if ((error as NodeJS.ErrnoException).code !== "EEXIST" || Date.now() >= deadline) throw new StudioError("BUSY", "Please wait while another request finishes.", 429);
+      await delay(20);
+    }
+  }
   try {
     let ledger: Ledger;
     try {
@@ -40,12 +49,15 @@ export async function reserveAttempt(dir: string, id: string, options: { now?: n
   });
 }
 export async function finishAttempt(dir: string, id: string, status: "succeeded" | "failed", asset?: { id: string; sha256: string }) {
-  return transact(dir, ledger => {
-    const a = ledger.attempts.find(a => a.id === id);
-    if (!a) throw new StudioError("USAGE_UNAVAILABLE", "Generation allowance is unavailable.", 503);
-    a.status = status;
-    if (asset) { a.assetId = asset.id; a.sha256 = asset.sha256; }
-  });
+  try {
+    await transact(dir, ledger => {
+      const a = ledger.attempts.find(a => a.id === id);
+      if (!a) throw new StudioError("USAGE_UNAVAILABLE", "Generation allowance is unavailable.", 503);
+      a.status = status;
+      if (asset) { a.assetId = asset.id; a.sha256 = asset.sha256; }
+    });
+    return true;
+  } catch { return false; } // The original reservation stays consumed.
 }
 export async function verifyLineage(dir: string, id: string, sha256: string) {
   return transact(dir, ledger => ledger.attempts.some(a => a.status === "succeeded" && a.assetId === id && a.sha256 === sha256));

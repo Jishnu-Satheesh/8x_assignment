@@ -12,7 +12,7 @@ export type GeneratedAsset = {
   id: string; jobId: string; source: "ai-generated"; provider: "google";
   model: ModelId; providerModel: string; prompt: string; aspectRatio: AspectRatio; resolution: Resolution;
   createdAt: string; width: number; height: number; mediaType: "image/jpeg" | "image/png" | "image/webp";
-  dataUrl: string; reference?: { name: string; assetId?: string; sha256: string };
+  dataUrl: string; referenceReusable?: boolean; reference?: { name: string; assetId?: string; sha256: string };
 };
 export type GenerationJob =
   | { id: string; status: "processing"; input: GenerationInput; startedAt: string }

@@ -1,4 +1,4 @@
-# Phase 1 design system
+# Creative workspace design system
 
 This is the source of truth for the creative workspace. The candidate's Phase 1 brief supplies these values. The application uses semantic CSS tokens; components must not contain literal brand colors.
 
@@ -67,10 +67,10 @@ Manrope is the UI/body family; Space Grotesk is the heading family. Self-host fo
 
 Use shared shadcn/Radix primitives for buttons, input, badges, dialog, drawer, select, and tooltips. App-specific layout, editorial cards, and the gallery compose these primitives. Shared focus styles use the ring token and must remain visible on dark surfaces.
 
-The navigation groups are DISCOVER, CREATE, and WORKSPACE. Explore is the only working destination. Image Studio, Cinematic Studio, My Assets, and Brand DNA visibly say **Soon** and do not link to invented routes.
+The navigation groups are DISCOVER, CREATE, and WORKSPACE. Explore and Image Studio are working destinations. Cinematic Studio, My Assets, and Brand DNA visibly say **Soon** and do not link to invented routes. Image Studio defaults to the compact rail on entry, with manual expansion available.
 
-Search and category filtering work together over a small typed local collection. Preview dialogs contain a title, description, image alternative, useful creative direction, image credit, and an honest explanation that generation belongs to a future phase. Escape closes overlays; focus is trapped while open and returns to the trigger.
+Search and category filtering work together over a small typed local collection. Preview dialogs contain a title, description, image alternative, useful creative direction, image credit, and a clear source-photography label. Escape closes overlays; focus is trapped while open and returns to the trigger.
 
 ## Imagery and honesty
 
-Curate legitimate, attributed source images and serve optimized local files with stable aspect ratios. Keep a source/license record under `docs/`; never label editorial source photographs as model-generated results. Provide loading and failed-image treatments, descriptive alternatives, readable image overlays, disabled states, an empty-collection state, and a distinct no-search-results state. Do not introduce accounts, billing, generation, or other integrations in this phase.
+Curate legitimate, attributed source images and serve optimized local files with stable aspect ratios. Keep a source/license record under `docs/`; never label editorial source photographs as model-generated results. Provide loading and failed-image treatments, descriptive alternatives, readable image overlays, disabled states, an empty-collection state, and a distinct no-search-results state. Phase 2 adds only Gemini Image Studio; generated images have explicit AI provenance and session-only history. Accounts, billing, and other modules remain outside scope.
