@@ -9,3 +9,4 @@ coverage/
 .env*
 !.env.example
 .superdesign/tmp/
+.studio-data/
