@@ -1,0 +1,68 @@
+/* Candidate-supplied dark palette. These override the generated Orange preset. */
+:root,
+:root.dark {
+  color-scheme: dark;
+  --background: #0D0F12;
+  --foreground: #F5F5F2;
+  --sidebar: #101216;
+  --card: #171A1F;
+  --popover: #1D2128;
+  --secondary: #22262D;
+  --muted: #22262D;
+  --muted-foreground: #B0B5C0;
+  --border: #30343C;
+  --input: #30343C;
+  --primary: #F6A17D;
+  --primary-foreground: #21130F;
+  --accent: #2A2E36;
+  --ring: #FFB494;
+  --destructive: #FF8187;
+  --success: #78D6AF;
+  --warning: #EAC47F;
+  --card-foreground: var(--foreground);
+  --popover-foreground: var(--foreground);
+  --secondary-foreground: var(--foreground);
+  --accent-foreground: var(--foreground);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+  --radius: 12px;
+  --radius-control: 10px;
+  --radius-gallery: 14px;
+  --radius-hero: 18px;
+  --sidebar-expanded: 252px;
+  --sidebar-collapsed: 72px;
+  --sidebar-drawer: 280px;
+  --topbar-height: 64px;
+  --content-max: 1480px;
+  --page-padding: 32px;
+  --motion: 180ms;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-manrope), sans-serif; font-size: 14px; line-height: 22px; }
+h1, h2, h3, .wordmark { font-family: var(--font-space-grotesk), sans-serif; font-weight: 600; }
+button, input { font: inherit; }
+::selection { color: var(--primary-foreground); background: var(--primary); }
+:where(a, button, input, [tabindex]):focus-visible { outline: 2px solid var(--ring); outline-offset: 4px; }
+:where(button:disabled, [aria-disabled="true"]) { cursor: not-allowed; }
+[data-slot="button"], [data-slot="input"] { border-radius: var(--radius-control); min-height: 40px; }
+[data-slot="button"] { font-weight: 500; padding-inline: 16px; }
+[data-slot="button"][data-size^="icon"] { width: 40px; height: 40px; padding: 0; }
+[data-slot="badge"] { font-size: 12px; line-height: 16px; padding: 4px 8px; border-radius: var(--radius); }
+[data-slot="tooltip-content"] { max-width: 252px; font-size: 13px; line-height: 20px; padding: 8px 12px; }
+
+@media (max-width: 1023px) { :root, :root.dark { --page-padding: 24px; } }
+@media (max-width: 639px) { :root, :root.dark { --page-padding: 16px; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

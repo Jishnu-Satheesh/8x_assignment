@@ -1,3 +1,11 @@
 .agent-capture-state/
 __pycache__/
 *.pyc
+node_modules/
+.next/
+out/
+coverage/
+*.tsbuildinfo
+.env*
+!.env.example
+.superdesign/tmp/

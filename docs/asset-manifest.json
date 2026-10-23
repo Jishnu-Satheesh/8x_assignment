@@ -1,0 +1,82 @@
+[
+  {
+    "file": "public/images/desert.webp",
+    "source": "https://images.unsplash.com/photo-1542401886-65d6c61db217?auto=format&fit=crop&w=1800&q=85&fm=webp",
+    "credit": "Unsplash",
+    "license": "https://unsplash.com/license",
+    "sha256": "7a8edcb6bd013274a5a66a9fa6757a273d73bfed11e25247e58b46d20702da67",
+    "bytes": 68422
+  },
+  {
+    "file": "public/images/fashion.webp",
+    "source": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=85&fm=webp",
+    "credit": "Unsplash",
+    "license": "https://unsplash.com/license",
+    "sha256": "9286950f0883cf26b43601fd0117009fb30581dc08bbf5e4dac1f190d65ee534",
+    "bytes": 124004
+  },
+  {
+    "file": "public/images/perfume.webp",
+    "source": "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=900&q=85&fm=webp",
+    "credit": "Unsplash",
+    "license": "https://unsplash.com/license",
+    "sha256": "9e450a5f98b26e0acba1b0cf868e5a21fab390ac6a97340d3a6099ac3d5c514c",
+    "bytes": 74120
+  },
+  {
+    "file": "public/images/architecture.webp",
+    "source": "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=900&q=85&fm=webp",
+    "credit": "Unsplash",
+    "license": "https://unsplash.com/license",
+    "sha256": "594eb6e5ed47ec569c0c64f22513aad8db8f945d774d406a976b96db21097f56",
+    "bytes": 150932
+  },
+  {
+    "file": "public/images/automotive.webp",
+    "source": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=900&q=85&fm=webp",
+    "credit": "Unsplash",
+    "license": "https://unsplash.com/license",
+    "sha256": "11aa8f63a0ad0821d6a2a44ff4b1141d664423888ac9d7dc18402338ce3b5002",
+    "bytes": 32000
+  },
+  {
+    "file": "public/images/pigment.webp",
+    "source": "https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=900&q=85&fm=webp",
+    "credit": "Unsplash",
+    "license": "https://unsplash.com/license",
+    "sha256": "1723d8b14a3e8175904ce594cd8219dda5123059271535982b05c0cec8b46162",
+    "bytes": 147258
+  },
+  {
+    "file": "public/images/portrait.webp",
+    "source": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=85&fm=webp",
+    "credit": "Unsplash",
+    "license": "https://unsplash.com/license",
+    "sha256": "2aa52070468e3c5d55de7b6dad3d59b6830e83ccd6e5511e81194b272c588497",
+    "bytes": 67928
+  },
+  {
+    "file": "public/images/forest.webp",
+    "source": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=85&fm=webp",
+    "credit": "Unsplash",
+    "license": "https://unsplash.com/license",
+    "sha256": "e2c036bef98f4b62ed27b9309bbbf47e2fda36fb556043b3a5ac3dbd9e537bad",
+    "bytes": 155408
+  },
+  {
+    "file": "public/fonts/manrope-latin.woff2",
+    "source": "https://fonts.gstatic.com/s/manrope/v20/xn7gYHE41ni1AdIRggexSg.woff2",
+    "family": "Manrope",
+    "license": "https://raw.githubusercontent.com/google/fonts/main/ofl/manrope/OFL.txt",
+    "sha256": "a30ddcd349703aff7464c34bef3fffdff405ee50c113440d7c8693c02d210972",
+    "bytes": 24836
+  },
+  {
+    "file": "public/fonts/space-grotesk-latin.woff2",
+    "source": "https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2",
+    "family": "Space Grotesk",
+    "license": "https://raw.githubusercontent.com/google/fonts/main/ofl/spacegrotesk/OFL.txt",
+    "sha256": "0640890476fc1198ab4de571fb658de443c4d85b66466ec09534a8737ab1ce9d",
+    "bytes": 22288
+  }
+]

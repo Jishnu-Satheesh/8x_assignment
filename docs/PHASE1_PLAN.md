@@ -8,6 +8,8 @@
 
 **Source of truth:** [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) and the candidate's Phase 1 brief. Execute inline in the current capture-enabled repository; preserve existing history and capture artifacts.
 
+**Visual direction approved by the candidate on 2026-10-23:** [Superdesign v1](https://p.superdesign.dev/draft/61e6ccfc-8cf2-4ee2-b6e7-a4d0d1dbb4ca), saved as [the visual reference](design/phase1-reference.html). The approval authorizes implementation; final acceptance still requires inspection of the working local app. The generated reference covers the shell, hero, and intent cards; the required searchable gallery, interaction states, responsive rules, and accessibility are implemented from the brief.
+
 ## Capture and repository preflight
 
 - [x] Read `CAPTURE-TEST.md`: PASS.
@@ -32,24 +34,24 @@ Use an understated typographic identity, dark semantic surfaces, warm peach emph
 
 Files: `package.json`, lockfile, `components.json`, Next/TypeScript/ESLint/PostCSS configuration, `src/app/layout.tsx`, `src/app/globals.css`, `src/components/ui/*`, `src/lib/utils.ts`, `public/fonts/`, `docs/DESIGN_SYSTEM.md`.
 
-- [ ] Inspect the current shadcn CLI and decode the supplied preset; choose Radix explicitly.
-- [ ] Bootstrap at the repository root without replacing capture files, ignore rules, or Git history.
-- [ ] Initialize from the supplied preset and inspect generated dependencies, style, and semantic variables.
-- [ ] Apply the complete custom dark palette, typography, spacing, geometry, motion, and reduced-motion rules.
-- [ ] Add only the primitives and dependencies Phase 1 actually uses; self-host fonts.
+- [x] Inspect the current shadcn CLI and decode the supplied preset; choose Radix explicitly.
+- [x] Bootstrap at the repository root without replacing capture files, ignore rules, or Git history.
+- [x] Initialize from the supplied preset and inspect generated dependencies, style, and semantic variables.
+- [x] Apply the complete custom dark palette, typography, spacing, geometry, motion, and reduced-motion rules.
+- [x] Add only the primitives and dependencies Phase 1 actually uses; self-host fonts.
 - [ ] Commit foundation and available capture logs; verify the commit if permitted.
 
 ### 2. Navigation and editorial Explore
 
 Files: `src/components/workspace/*`, `src/components/explore/*`, `src/lib/inspiration.ts`, `src/app/page.tsx`, `src/app/loading.tsx`, `public/images/`, `docs/ASSET_SOURCES.md`.
 
-- [ ] Build the 252/72 px desktop sidebar, grouped destinations, 64 px topbar, and 280 px Radix mobile drawer.
-- [ ] Explore is active; Image Studio, Cinematic Studio, My Assets, Brand DNA say Soon and have no working destination links.
-- [ ] Build an editorial heading/feature, exactly three intent cards, and a curated responsive grid.
-- [ ] Add a typed local dataset with descriptive alternatives, categories, useful style information, and image provenance.
-- [ ] Search title, category, tags, and creative direction; category filters combine with search. Show a live result count and a clear reset action.
-- [ ] Open accessible image previews with style information, source attribution, Escape/backdrop/close-button dismissal, focus trapping, and focus restoration.
-- [ ] Provide honest upcoming-feature explanations, keyboard/focus states, skeletons, an empty collection, no matches, and failed-image handling.
+- [x] Build the 252/72 px desktop sidebar, grouped destinations, 64 px topbar, and 280 px Radix mobile drawer.
+- [x] Explore is active; Image Studio, Cinematic Studio, My Assets, Brand DNA say Soon and have no working destination links.
+- [x] Build an editorial heading/feature, exactly three intent cards, and a curated responsive grid.
+- [x] Add a typed local dataset with descriptive alternatives, categories, useful style information, and image provenance.
+- [x] Search title, category, tags, and creative direction; category filters combine with search. Show a live result count and a clear reset action.
+- [x] Open accessible image previews with style information, source attribution, Escape/backdrop/close-button dismissal, focus trapping, and focus restoration.
+- [x] Provide honest upcoming-feature explanations, keyboard/focus states, skeletons, an empty collection, no matches, and failed-image handling.
 - [ ] Commit this feature milestone with available capture logs; verify the commit if permitted.
 
 ### 3. Verification and candidate handoff

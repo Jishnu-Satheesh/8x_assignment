@@ -1,0 +1,220 @@
+<!DOCTYPE html><html lang="en" class="dark"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Workspace - Explore</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Space+Grotesk:wght@600&display=swap');
+
+    :root {
+      --background: #0D0F12;
+      --foreground: #F5F5F2;
+      --sidebar: #101216;
+      --sidebar-foreground: #F5F5F2;
+      --card: #171A1F;
+      --card-foreground: #F5F5F2;
+      --popover: #1D2128;
+      --popover-foreground: #F5F5F2;
+      --secondary: #22262D;
+      --secondary-foreground: #F5F5F2;
+      --muted: #22262D;
+      --muted-foreground: #B0B5C0;
+      --border: #30343C;
+      --input: #30343C;
+      --primary: #F6A17D;
+      --primary-foreground: #21130F;
+      --accent: #2A2E36;
+      --accent-foreground: #F5F5F2;
+      --ring: #FFB494;
+      --sidebar-border: #30343C;
+      --destructive: #FF8187;
+      --success: #78D6AF;
+      --warning: #EAC47F;
+      --radius: 12px;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--foreground);
+      font-family: 'Manrope', sans-serif;
+      margin: 0;
+    }
+
+    .font-heading {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* Tailwind configuration injected via arbitrary values for brevity where needed, 
+       but CSS variables are used for semantic colors. */
+  </style>
+</head>
+<body>
+  <div class="min-h-screen flex bg-[#0D0F12] text-[#F5F5F2] selection:bg-[#F6A17D] selection:text-[#21130F]" data-sd-id="1">
+    
+    <!-- Sidebar -->
+    <aside class="w-[252px] bg-[#101216] border-r border-[#30343C] flex flex-col shrink-0" data-sd-id="2">
+      <!-- Logo -->
+      <div class="h-[64px] flex items-center px-[24px]" data-sd-id="3">
+        <div class="flex items-center gap-[8px] text-[#F5F5F2]" data-sd-id="4">
+          <iconify-icon icon="lucide:aperture" class="text-[20px]"></iconify-icon>
+          <span class="font-heading text-[16px] leading-[24px] font-semibold lowercase tracking-tight" data-sd-id="5">higgsfield</span>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="flex-1 overflow-y-auto px-[16px] py-[24px] flex flex-col gap-[32px]" data-sd-id="6">
+        
+        <!-- DISCOVER -->
+        <div class="flex flex-col gap-[8px]" data-sd-id="7">
+          <h3 class="text-[12px] leading-[16px] font-medium text-[#B0B5C0] uppercase tracking-wider px-[8px]" data-sd-id="8">Discover</h3>
+          <nav class="flex flex-col gap-[4px]" data-sd-id="9">
+            <a href="#" class="flex items-center gap-[12px] px-[8px] py-[8px] bg-[#2A2E36] text-[#F5F5F2] rounded-[10px] text-[14px] leading-[22px] font-medium transition-colors" data-sd-id="10">
+              <iconify-icon icon="lucide:compass" class="text-[18px]"></iconify-icon>
+              Explore
+            </a>
+          </nav>
+        </div>
+
+        <!-- CREATE -->
+        <div class="flex flex-col gap-[8px]" data-sd-id="11">
+          <h3 class="text-[12px] leading-[16px] font-medium text-[#B0B5C0] uppercase tracking-wider px-[8px]" data-sd-id="12">Create</h3>
+          <nav class="flex flex-col gap-[4px]" data-sd-id="13">
+            <div class="flex items-center justify-between px-[8px] py-[8px] text-[#B0B5C0] rounded-[10px] text-[14px] leading-[22px] font-medium cursor-not-allowed" data-sd-id="14">
+              <div class="flex items-center gap-[12px]" data-sd-id="15">
+                <iconify-icon icon="lucide:image" class="text-[18px]"></iconify-icon>
+                Image Studio
+              </div>
+              <span class="text-[10px] leading-[14px] px-[6px] py-[2px] bg-[#22262D] rounded-[4px] uppercase tracking-wider font-semibold" data-sd-id="16">Soon</span>
+            </div>
+            <div class="flex items-center justify-between px-[8px] py-[8px] text-[#B0B5C0] rounded-[10px] text-[14px] leading-[22px] font-medium cursor-not-allowed" data-sd-id="17">
+              <div class="flex items-center gap-[12px]" data-sd-id="18">
+                <iconify-icon icon="lucide:film" class="text-[18px]"></iconify-icon>
+                Cinematic Studio
+              </div>
+              <span class="text-[10px] leading-[14px] px-[6px] py-[2px] bg-[#22262D] rounded-[4px] uppercase tracking-wider font-semibold" data-sd-id="19">Soon</span>
+            </div>
+          </nav>
+        </div>
+
+        <!-- WORKSPACE -->
+        <div class="flex flex-col gap-[8px]" data-sd-id="20">
+          <h3 class="text-[12px] leading-[16px] font-medium text-[#B0B5C0] uppercase tracking-wider px-[8px]" data-sd-id="21">Workspace</h3>
+          <nav class="flex flex-col gap-[4px]" data-sd-id="22">
+            <div class="flex items-center justify-between px-[8px] py-[8px] text-[#B0B5C0] rounded-[10px] text-[14px] leading-[22px] font-medium cursor-not-allowed" data-sd-id="23">
+              <div class="flex items-center gap-[12px]" data-sd-id="24">
+                <iconify-icon icon="lucide:folder-closed" class="text-[18px]"></iconify-icon>
+                My Assets
+              </div>
+              <span class="text-[10px] leading-[14px] px-[6px] py-[2px] bg-[#22262D] rounded-[4px] uppercase tracking-wider font-semibold" data-sd-id="25">Soon</span>
+            </div>
+            <div class="flex items-center justify-between px-[8px] py-[8px] text-[#B0B5C0] rounded-[10px] text-[14px] leading-[22px] font-medium cursor-not-allowed" data-sd-id="26">
+              <div class="flex items-center gap-[12px]" data-sd-id="27">
+                <iconify-icon icon="lucide:fingerprint" class="text-[18px]"></iconify-icon>
+                Brand DNA
+              </div>
+              <span class="text-[10px] leading-[14px] px-[6px] py-[2px] bg-[#22262D] rounded-[4px] uppercase tracking-wider font-semibold" data-sd-id="28">Soon</span>
+            </div>
+          </nav>
+        </div>
+
+      </div>
+
+      <!-- Collapse Control -->
+      <div class="p-[16px]" data-sd-id="29">
+        <button class="w-full flex items-center justify-center gap-[8px] py-[8px] text-[#B0B5C0] hover:text-[#F5F5F2] hover:bg-[#2A2E36] rounded-[10px] text-[14px] leading-[22px] font-medium transition-colors" aria-label="Collapse Sidebar" data-sd-id="30">
+          <iconify-icon icon="lucide:panel-left-close" class="text-[18px]"></iconify-icon>
+          <span class="sr-only" data-sd-id="31">Collapse Sidebar</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col min-w-0" data-sd-id="32">
+      
+      <!-- Topbar -->
+      <header class="h-[64px] shrink-0 border-b border-[#30343C] flex items-center justify-between px-[32px]" data-sd-id="33">
+        <div class="flex items-center gap-[8px] text-[14px] leading-[22px]" data-sd-id="34">
+          <span class="text-[#B0B5C0]" data-sd-id="35">Workspace</span>
+          <iconify-icon icon="lucide:chevron-right" class="text-[14px] text-[#30343C]"></iconify-icon>
+          <span class="text-[#F5F5F2] font-medium" data-sd-id="36">Explore</span>
+        </div>
+        <div class="flex items-center gap-[8px]" data-sd-id="37">
+           <span class="text-[12px] leading-[16px] px-[8px] py-[4px] bg-[#22262D] text-[#B0B5C0] rounded-[6px] font-medium" data-sd-id="38">Discovery Preview</span>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <main class="flex-1 overflow-y-auto" data-sd-id="39">
+        <div class="max-w-[1480px] mx-auto p-[32px] flex flex-col gap-[48px]" data-sd-id="40">
+          
+          <!-- Hero Section -->
+          <section class="relative h-[400px] rounded-[18px] overflow-hidden flex items-end p-[48px] border border-[#30343C]" data-sd-id="41">
+            <!-- Background Image -->
+            <img src="https://images.unsplash.com/photo-1542401886-65d6c61db217?q=80&amp;w=2940&amp;auto=format&amp;fit=crop" alt="Cinematic desert dunes" class="absolute inset-0 w-full h-full object-cover" data-sd-id="42">
+            <!-- Scrim -->
+            <div class="absolute inset-0 bg-gradient-to-r from-[#0D0F12]/90 via-[#0D0F12]/60 to-transparent" data-sd-id="43"></div>
+            
+            <!-- Hero Content -->
+            <div class="relative z-10 max-w-[600px] flex flex-col gap-[16px]" data-sd-id="44">
+              <span class="text-[12px] leading-[16px] font-medium text-[#F6A17D] uppercase tracking-wider" data-sd-id="45">A Little Inspiration</span>
+              <h1 class="font-heading text-[36px] leading-[42px] font-semibold text-[#F5F5F2]" data-sd-id="46">Less searching.<br>More imagining.</h1>
+              <p class="text-[14px] leading-[22px] text-[#B0B5C0] max-w-[480px]" data-sd-id="47">
+                Explore curated visual directions and conceptual photography to jumpstart your next creative project.
+              </p>
+              <div class="pt-[8px]" data-sd-id="48">
+                <button class="h-[44px] px-[24px] bg-[#F6A17D] hover:bg-[#F6A17D]/90 text-[#21130F] rounded-[10px] text-[14px] leading-[22px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFB494] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D0F12]" data-sd-id="49">
+                  Browse inspiration
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Intent Cards Row -->
+          <section class="grid grid-cols-3 gap-[24px]" data-sd-id="50">
+            <!-- Card 1 (Active) -->
+            <div class="bg-[#171A1F] border border-[#30343C] p-[24px] rounded-[14px] flex flex-col gap-[16px] transition-colors hover:border-[#F6A17D]/50 group cursor-pointer" data-sd-id="51">
+              <div class="w-[40px] h-[40px] rounded-[10px] bg-[#2A2E36] flex items-center justify-center text-[#F5F5F2] group-hover:bg-[#F6A17D] group-hover:text-[#21130F] transition-colors" data-sd-id="52">
+                <iconify-icon icon="lucide:search" class="text-[20px]"></iconify-icon>
+              </div>
+              <div data-sd-id="53">
+                <h2 class="font-heading text-[16px] leading-[24px] font-semibold text-[#F5F5F2]" data-sd-id="54">Find a visual direction</h2>
+                <p class="text-[13px] leading-[20px] text-[#B0B5C0] mt-[4px]" data-sd-id="55">Browse curated source photography.</p>
+              </div>
+            </div>
+
+            <!-- Card 2 (Soon) -->
+            <div class="bg-[#171A1F]/50 border border-[#30343C]/50 p-[24px] rounded-[14px] flex flex-col gap-[16px] opacity-70 cursor-not-allowed" data-sd-id="56">
+              <div class="w-[40px] h-[40px] rounded-[10px] bg-[#22262D] flex items-center justify-center text-[#B0B5C0]" data-sd-id="57">
+                <iconify-icon icon="lucide:image-plus" class="text-[20px]"></iconify-icon>
+              </div>
+              <div data-sd-id="58">
+                <h2 class="font-heading text-[16px] leading-[24px] font-semibold text-[#F5F5F2]" data-sd-id="59">Create an image</h2>
+                <div class="flex items-center gap-[8px] mt-[4px]" data-sd-id="60">
+                  <p class="text-[13px] leading-[20px] text-[#B0B5C0]" data-sd-id="61">Image Studio</p>
+                  <span class="text-[10px] leading-[14px] px-[6px] py-[2px] bg-[#22262D] text-[#B0B5C0] rounded-[4px] uppercase tracking-wider font-semibold" data-sd-id="62">Next phase</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 (Soon) -->
+            <div class="bg-[#171A1F]/50 border border-[#30343C]/50 p-[24px] rounded-[14px] flex flex-col gap-[16px] opacity-70 cursor-not-allowed" data-sd-id="63">
+              <div class="w-[40px] h-[40px] rounded-[10px] bg-[#22262D] flex items-center justify-center text-[#B0B5C0]" data-sd-id="64">
+                <iconify-icon icon="lucide:clapperboard" class="text-[20px]"></iconify-icon>
+              </div>
+              <div data-sd-id="65">
+                <h2 class="font-heading text-[16px] leading-[24px] font-semibold text-[#F5F5F2]" data-sd-id="66">Think in scenes</h2>
+                <div class="flex items-center gap-[8px] mt-[4px]" data-sd-id="67">
+                  <p class="text-[13px] leading-[20px] text-[#B0B5C0]" data-sd-id="68">Cinematic Studio</p>
+                  <span class="text-[10px] leading-[14px] px-[6px] py-[2px] bg-[#22262D] text-[#B0B5C0] rounded-[4px] uppercase tracking-wider font-semibold" data-sd-id="69">Soon</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+</body></html>
