@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+capture_repo="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
+rtk proxy python3 "$capture_repo/scripts/agent_capture.py" start
+exec rtk proxy codex --cd "$capture_repo" "$@"
