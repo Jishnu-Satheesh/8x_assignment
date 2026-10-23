@@ -130,7 +130,7 @@ def run():
         fill("  PERFUME  ")
         check(f"{label}: search finds a direction", count()["count"] == 1, count())
         click("button", "Product")
-        check(f"{label}: search and category combine", count()["count"] == 1 and evaluate("() => document.querySelector('.inspiration-trigger').getAttribute('aria-label')") == "Preview Quiet luxury")
+        check(f"{label}: search and category combine", count()["count"] == 1 and evaluate("() => document.querySelector('.inspiration-trigger').getAttribute('aria-label')") == "Quiet luxury Product — Preview")
         fill("desert")
         check(f"{label}: no results", count()["count"] == 0 and evaluate("() => document.querySelector('.empty-state h3').textContent") == "No directions found", count())
         if width == 1440:
@@ -138,7 +138,7 @@ def run():
         click("button", "Clear search & filters")
         check(f"{label}: reset restores collection", count()["count"] == 8 and evaluate("() => document.querySelector('#inspiration-search').value") == "", count())
 
-        click("button", "Preview Dune studies")
+        click("button", "Dune studies Cinematic — Preview")
         preview = evaluate("() => {const d=document.querySelector('[role=dialog]'),f=document.activeElement.getBoundingClientRect(),b=d.getBoundingClientRect();return {title:d.querySelector('[data-slot=dialog-title]').textContent,labels:[...d.querySelectorAll('dt')].map(e=>e.textContent),focus:d.contains(document.activeElement),focusVisible:f.top>=b.top&&f.bottom<=b.bottom&&f.left>=b.left&&f.right<=b.right,described:!!d.getAttribute('aria-describedby'),overflow:document.documentElement.scrollWidth>innerWidth}}")
         check(f"{label}: accessible preview opens", preview == {"title": "Dune studies", "labels": ["Light & mood", "Composition", "Color story"], "focus": True, "focusVisible": True, "described": True, "overflow": False}, preview)
         if width in [1440, 390]:
@@ -147,7 +147,7 @@ def run():
             tool("press_key", key="Tab")
             check(f"{label}: preview traps keyboard focus", evaluate("() => document.querySelector('[role=dialog]').contains(document.activeElement)"))
         tool("press_key", key="Escape")
-        check(f"{label}: Escape closes preview and restores focus", wait_for("!document.querySelector('[role=dialog]') && document.activeElement.getAttribute('aria-label')==='Preview Dune studies'"))
+        check(f"{label}: Escape closes preview and restores focus", wait_for("!document.querySelector('[role=dialog]') && document.activeElement.getAttribute('aria-label')==='Dune studies Cinematic — Preview'"))
 
         console = tool("list_console_messages", types=["error", "warn"])
         network = tool("list_network_requests")
@@ -157,9 +157,9 @@ def run():
     tool("emulate", viewport="1440x900x1", prefersReducedMotion="reduce")
     tool("navigate_page", url="http://localhost:3000")
     tool("wait_for", text=["Curated inspiration"], visible=True, timeout=15000)
-    click("button", "Preview Quiet luxury")
+    click("button", "Quiet luxury Product — Preview")
     click("button", "Close")
-    check("Close button dismisses preview and restores focus", wait_for("!document.querySelector('[role=dialog]') && document.activeElement.getAttribute('aria-label')==='Preview Quiet luxury'"))
+    check("Close button dismisses preview and restores focus", wait_for("!document.querySelector('[role=dialog]') && document.activeElement.getAttribute('aria-label')==='Quiet luxury Product — Preview'"))
     tool("press_key", key="Enter")
     check("Keyboard Enter opens a preview", evaluate("() => !!document.querySelector('[role=dialog]')"))
     tool("press_key", key="Escape")

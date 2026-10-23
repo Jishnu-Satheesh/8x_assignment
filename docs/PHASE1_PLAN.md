@@ -39,7 +39,7 @@ Files: `package.json`, lockfile, `components.json`, Next/TypeScript/ESLint/PostC
 - [x] Initialize from the supplied preset and inspect generated dependencies, style, and semantic variables.
 - [x] Apply the complete custom dark palette, typography, spacing, geometry, motion, and reduced-motion rules.
 - [x] Add only the primitives and dependencies Phase 1 actually uses; self-host fonts.
-- [ ] Commit foundation and available capture logs; verify the commit if permitted.
+- [x] Commit foundation and available capture logs; verify the commit if permitted. Foundation and Explore were committed together in `0a3394b` after the plan milestone `acf414e`.
 
 ### 2. Navigation and editorial Explore
 
@@ -52,20 +52,21 @@ Files: `src/components/workspace/*`, `src/components/explore/*`, `src/lib/inspir
 - [x] Search title, category, tags, and creative direction; category filters combine with search. Show a live result count and a clear reset action.
 - [x] Open accessible image previews with style information, source attribution, Escape/backdrop/close-button dismissal, focus trapping, and focus restoration.
 - [x] Provide honest upcoming-feature explanations, keyboard/focus states, skeletons, an empty collection, no matches, and failed-image handling.
-- [ ] Commit this feature milestone with available capture logs; verify the commit if permitted.
+- [x] Commit this feature milestone with available capture logs; verify the commit if permitted. Verified `0a3394b` in Git history.
 
 ### 3. Verification and candidate handoff
 
 Files: focused behavior tests where justified, `docs/PHASE1_QA.md`, `docs/screenshots/*`, `README.md`.
 
-- [ ] Run typecheck, lint, meaningful behavior checks, and a production build; fix failures.
-- [ ] Run the local app and use connected Chrome DevTools MCP at **1440×900**, **1024×768**, **768×1024**, and **390×844**.
-- [ ] At each viewport inspect readability, grid/layout, overflow, and loaded images. Test desktop collapse and mobile drawer where applicable.
-- [ ] Test combined search/filter/reset, no results, preview dismissal, keyboard activation, focus trapping/restoration, disabled destinations, and reduced motion.
-- [ ] Inspect console errors and network failures. Save real screenshots and write a factual QA report including failures/resolutions and any untested items.
-- [ ] Review for out-of-scope services, misleading working links, leaked credentials, and palette/spacing drift.
-- [ ] Commit verification/report and available logs if permitted; verify history and report the actual outcome.
-- [ ] Show the candidate the running local URL and screenshots. Request explicit manual review/approval. Stop at Phase 1.
+- [x] Run typecheck, lint, meaningful behavior checks, and a production build; fix failures. Four data tests pass; the supported Webpack build passes in this managed environment.
+- [x] Run the local app and use connected Chrome DevTools MCP at **1440×900**, **1024×768**, **768×1024**, and **390×844**. Used an isolated headless instance of the actual MCP server because the registered headful launch had no usable display.
+- [x] At each viewport inspect readability, grid/layout, overflow, and loaded images. Test desktop collapse and mobile drawer where applicable.
+- [x] Test combined search/filter/reset, no results, preview dismissal, keyboard activation, focus trapping/restoration, disabled destinations, and reduced motion. Final production replay: **68/68 assertions**.
+- [x] Inspect console errors and network failures. Save real screenshots and write a factual QA report including failures/resolutions and any untested items. Final Lighthouse navigation audit: **53 passed, 0 failed**, accessibility **100**.
+- [x] Review for out-of-scope services, misleading working links, leaked credentials, and palette/spacing drift. Independent review completed; one optional combined-reset suggestion is documented as deferred.
+- [x] Prepare the verified source, report, screenshots, and available logs for the final verification commit. Its actual hash is reported after Git confirms it.
+- [x] Prepare the candidate handoff with the running local URL and screenshots in `docs/PHASE1_QA.md`. Later phases remain unimplemented.
+- [ ] Candidate manually inspects the working app and explicitly approves Phase 1. Stop at Phase 1; acceptance does not automatically authorize later modules.
 
 ## Acceptance criteria
 

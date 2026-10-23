@@ -20,7 +20,7 @@ export function InspirationCard({ item }: { item: Inspiration }) {
           <button
             type="button"
             className="inspiration-trigger"
-            aria-label={`Preview ${item.title}`}
+            aria-label={`${item.title} ${item.category} — Preview`}
           >
             <div className="card-image">
               <InspirationImage
@@ -34,7 +34,7 @@ export function InspirationCard({ item }: { item: Inspiration }) {
             </div>
             <div className="card-caption">
               <div>
-                <h3>{item.title}</h3>
+                <h3>{item.title}</h3>{" "}
                 <p className="card-category">{item.category}</p>
               </div>
               <ArrowUpRight aria-hidden="true" />

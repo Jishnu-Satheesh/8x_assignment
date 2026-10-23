@@ -1,0 +1,114 @@
+{
+  "tested_at": "2026-10-23T14:08:34.151249+00:00",
+  "tool": "Chrome DevTools MCP / headless Chrome",
+  "url": "http://localhost:3000",
+  "checks": [
+    {
+      "check": "1440x900: dimensions, typography, assets and overflow",
+      "passed": true,
+      "evidence": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "overflow": false,
+        "sidebar": 252,
+        "topbar": 64,
+        "padding": 32,
+        "headline": [
+          "36px",
+          "42px"
+        ],
+        "imageCount": 9,
+        "badImages": [],
+        "columns": 4,
+        "background": "rgb(13, 15, 18)",
+        "disabled": [
+          "Image Studio \u2014 coming soon",
+          "Cinematic Studio \u2014 coming soon",
+          "My Assets \u2014 coming soon",
+          "Brand DNA \u2014 coming soon"
+        ],
+        "futureLinks": 0
+      }
+    },
+    {
+      "check": "1440x900: collapse navigation",
+      "passed": true,
+      "evidence": {
+        "width": 72,
+        "overflow": false,
+        "expanded": "false"
+      }
+    },
+    {
+      "check": "1440x900: expand navigation",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "1440x900: search finds a direction",
+      "passed": true,
+      "evidence": {
+        "count": 1,
+        "status": "1 direction found"
+      }
+    },
+    {
+      "check": "1440x900: search and category combine",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "1440x900: no results",
+      "passed": true,
+      "evidence": {
+        "count": 0,
+        "status": "0 directions found"
+      }
+    },
+    {
+      "check": "1440x900: reset restores collection",
+      "passed": true,
+      "evidence": {
+        "count": 8,
+        "status": "8 directions to explore"
+      }
+    },
+    {
+      "check": "1440x900: accessible preview opens",
+      "passed": true,
+      "evidence": {
+        "title": "Dune studies",
+        "labels": [
+          "Light & mood",
+          "Composition",
+          "Color story"
+        ],
+        "focus": true,
+        "described": true,
+        "overflow": false
+      }
+    },
+    {
+      "check": "1440x900: preview traps keyboard focus",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "1440x900: preview traps keyboard focus",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "1440x900: preview traps keyboard focus",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "1440x900: Escape closes preview and restores focus",
+      "passed": false,
+      "evidence": null
+    }
+  ]
+}

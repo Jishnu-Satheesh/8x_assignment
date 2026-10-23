@@ -88,16 +88,16 @@ function Navigation({
                   <span
                     className="nav-tooltip-wrap"
                     tabIndex={collapsed ? 0 : undefined}
-                    aria-label={collapsed ? `${name} — coming soon` : undefined}
+                    aria-label={collapsed ? `${name} Soon` : undefined}
                   >
                     <button
                       className="nav-item"
                       type="button"
                       disabled
-                      aria-label={`${name} — coming soon`}
+                      aria-label={`${name} Soon`}
                     >
                       <Icon aria-hidden="true" />
-                      <span className="nav-label">{name}</span>
+                      <span className="nav-label">{name}</span>{" "}
                       <span className="soon-label" aria-hidden="true">
                         Soon
                       </span>

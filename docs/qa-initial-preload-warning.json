@@ -1,0 +1,236 @@
+{
+  "tested_at": "2026-10-23T14:02:21.308891+00:00",
+  "tool": "Chrome DevTools MCP / headless Chrome",
+  "url": "http://localhost:3000",
+  "checks": [
+    {
+      "check": "1440x900: dimensions, typography, assets and overflow",
+      "passed": true,
+      "evidence": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "overflow": false,
+        "sidebar": 252,
+        "topbar": 64,
+        "padding": 32,
+        "headline": [
+          "36px",
+          "42px"
+        ],
+        "imageCount": 9,
+        "badImages": [],
+        "columns": 4,
+        "background": "rgb(13, 15, 18)",
+        "disabled": [
+          "Image Studio \u2014 coming soon",
+          "Cinematic Studio \u2014 coming soon",
+          "My Assets \u2014 coming soon",
+          "Brand DNA \u2014 coming soon"
+        ],
+        "futureLinks": 0
+      }
+    },
+    {
+      "check": "1440x900: collapse navigation",
+      "passed": true,
+      "evidence": {
+        "width": 72,
+        "overflow": false,
+        "expanded": "false"
+      }
+    },
+    {
+      "check": "1440x900: expand navigation",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "1440x900: search finds a direction",
+      "passed": true,
+      "evidence": {
+        "count": 1,
+        "status": "1 direction found"
+      }
+    },
+    {
+      "check": "1440x900: search and category combine",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "1440x900: no results",
+      "passed": true,
+      "evidence": {
+        "count": 0,
+        "status": "0 directions found"
+      }
+    },
+    {
+      "check": "1440x900: reset restores collection",
+      "passed": true,
+      "evidence": {
+        "count": 8,
+        "status": "8 directions to explore"
+      }
+    },
+    {
+      "check": "1440x900: accessible preview opens",
+      "passed": true,
+      "evidence": {
+        "title": "Dune studies",
+        "labels": [
+          "Light & mood",
+          "Composition",
+          "Color story"
+        ],
+        "focus": true,
+        "described": true,
+        "overflow": false
+      }
+    },
+    {
+      "check": "1440x900: preview traps keyboard focus",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "1440x900: preview traps keyboard focus",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "1440x900: preview traps keyboard focus",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "1440x900: Escape closes preview and restores focus",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "1440x900: no console warnings/errors",
+      "passed": true,
+      "evidence": "Emulating viewport: {\"deviceScaleFactor\":1,\"isMobile\":false,\"hasTouch\":false,\"isLandscape\":false,\"width\":1440,\"height\":900}\nEmulating prefers-reduced-motion: no-preference\n## Console messages\n<no console messages found>"
+    },
+    {
+      "check": "1440x900: no failed network requests",
+      "passed": true,
+      "evidence": "Emulating viewport: {\"deviceScaleFactor\":1,\"isMobile\":false,\"hasTouch\":false,\"isLandscape\":false,\"width\":1440,\"height\":900}\nEmulating prefers-reduced-motion: no-preference\n## Network requests\nShowing 1-30 of 30 (Page 1 of 1).\nreqid=84 GET http://localhost:3000/ [200]\nreqid=85 GET http://localhost:3000/_next/static/media/5a0c43ffa288c21a-s.p.woff2 [200]\nreqid=86 GET http://localhost:3000/_next/static/media/fedf4c9280b16369-s.p.woff2 [200]\nreqid=87 GET http://localhost:3000/_next/image?url=%2Fimages%2Fdesert.webp&w=1920&q=75 [304]\nreqid=88 GET http://localhost:3000/_next/static/css/8c679279b8d4521d.css [200]\nreqid=89 GET http://localhost:3000/_next/static/chunks/webpack-0439835a3bfe3015.js [200]\nreqid=90 GET http://localhost:3000/_next/static/chunks/4bd1b696-c7408084347438ae.js [200]\nreqid=91 GET http://localhost:3000/_next/static/chunks/794-3c1567673e1f8cb7.js [200]\nreqid=92 GET http://localhost:3000/_next/static/chunks/main-app-f85adf031c300e2e.js [200]\nreqid=93 GET http://localhost:3000/_next/static/chunks/510-3e7bb55204d414fa.js [200]\nreqid=94 GET http://localhost:3000/_next/static/chunks/731-db4f36bc838280c9.js [200]\nreqid=95 GET http://localhost:3000/_next/static/chunks/app/layout-24a1409d6ae4f337.js [200]\nreqid=96 GET http://localhost:3000/_next/static/chunks/372-b91df8dfe6d8daf1.js [200]\nreqid=97 GET http://localhost:3000/_next/static/chunks/app/page-8a9985bf7a6b1217.js [200]\nreqid=98 GET http://localhost:3000/_next/image?url=%2Fimages%2Fdesert.webp&w=384&q=75 [304]\nreqid=99 GET http://localhost:3000/_next/image?url=%2Fimages%2Ffashion.webp&w=384&q=75 [304]\nreqid=100 GET http://localhost:3000/_next/image?url=%2Fimages%2Fperfume.webp&w=384&q=75 [304]\nreqid=101 GET http://localhost:3000/_next/image?url=%2Fimages%2Farchitecture.webp&w=384&q=75 [304]\nreqid=102 GET http://localhost:3000/_next/image?url=%2Fimages%2Fautomotive.webp&w=384&q=75 [304]\nreqid=103 GET http://localhost:3000/_next/image?url=%2Fimages%2Fpigment.webp&w=384&q=75 [304]\nreqid=104 GET http://localhost:3000/_next/image?url=%2Fimages%2Fportrait.webp&w=384&q=75 [304]\nreqid=105 GET http://localhost:3000/_next/image?url=%2Fimages%2Fforest.webp&w=384&q=75 [304]\nreqid=106 GET http://localhost:3000/?_rsc=5CB68i4pnAekjehf [200]\nreqid=107 GET http://localhost:3000/?_rsc=8nTjltbQWvg6NcbE [200]\nreqid=108 GET http://localhost:3000/_next/image?url=%2Fimages%2Ffashion.webp&w=384&q=75 [200]\nreqid=109 GET http://localhost:3000/_next/image?url=%2Fimages%2Farchitecture.webp&w=384&q=75 [200]\nreqid=110 GET http://localhost:3000/_next/image?url=%2Fimages%2Fautomotive.webp&w=384&q=75 [200]\nreqid=111 GET http://localhost:3000/_next/image?url=%2Fimages%2Fpigment.webp&w=384&q=75 [200]\nreqid=112 GET http://localhost:3000/_next/image?url=%2Fimages%2Fportrait.webp&w=384&q=75 [200]\nreqid=113 GET http://localhost:3000/_next/image?url=%2Fimages%2Fforest.webp&w=384&q=75 [200]"
+    },
+    {
+      "check": "1024x768: dimensions, typography, assets and overflow",
+      "passed": true,
+      "evidence": {
+        "viewport": [
+          1024,
+          768
+        ],
+        "overflow": false,
+        "sidebar": 252,
+        "topbar": 64,
+        "padding": 32,
+        "headline": [
+          "36px",
+          "42px"
+        ],
+        "imageCount": 9,
+        "badImages": [],
+        "columns": 3,
+        "background": "rgb(13, 15, 18)",
+        "disabled": [
+          "Image Studio \u2014 coming soon",
+          "Cinematic Studio \u2014 coming soon",
+          "My Assets \u2014 coming soon",
+          "Brand DNA \u2014 coming soon"
+        ],
+        "futureLinks": 0
+      }
+    },
+    {
+      "check": "1024x768: collapse navigation",
+      "passed": true,
+      "evidence": {
+        "width": 72,
+        "overflow": false,
+        "expanded": "false"
+      }
+    },
+    {
+      "check": "1024x768: expand navigation",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "1024x768: search finds a direction",
+      "passed": true,
+      "evidence": {
+        "count": 1,
+        "status": "1 direction found"
+      }
+    },
+    {
+      "check": "1024x768: search and category combine",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "1024x768: no results",
+      "passed": true,
+      "evidence": {
+        "count": 0,
+        "status": "0 directions found"
+      }
+    },
+    {
+      "check": "1024x768: reset restores collection",
+      "passed": true,
+      "evidence": {
+        "count": 8,
+        "status": "8 directions to explore"
+      }
+    },
+    {
+      "check": "1024x768: accessible preview opens",
+      "passed": true,
+      "evidence": {
+        "title": "Dune studies",
+        "labels": [
+          "Light & mood",
+          "Composition",
+          "Color story"
+        ],
+        "focus": true,
+        "described": true,
+        "overflow": false
+      }
+    },
+    {
+      "check": "1024x768: preview traps keyboard focus",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "1024x768: preview traps keyboard focus",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "1024x768: preview traps keyboard focus",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "1024x768: Escape closes preview and restores focus",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "1024x768: no console warnings/errors",
+      "passed": false,
+      "evidence": "Emulating viewport: {\"deviceScaleFactor\":1,\"isMobile\":false,\"hasTouch\":false,\"isLandscape\":false,\"width\":1024,\"height\":768}\nEmulating prefers-reduced-motion: no-preference\n## Console messages\nShowing 1-1 of 1 (Page 1 of 1).\nmsgid=23 [warn] The resource http://localhost:3000/_next/image?url=%2Fimages%2Fdesert.webp&w=1080&q=75 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. (0 args)"
+    }
+  ]
+}
