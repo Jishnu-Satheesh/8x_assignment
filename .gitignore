@@ -10,3 +10,6 @@ coverage/
 !.env.example
 .superdesign/tmp/
 .studio-data/
+
+# Trigger local build artifacts
+.trigger/
