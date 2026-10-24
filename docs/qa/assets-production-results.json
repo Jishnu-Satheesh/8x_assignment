@@ -1,0 +1,43 @@
+{
+  "origin": "https://8x-assignment-ecru.vercel.app",
+  "tool": "real Chrome DevTools MCP",
+  "deployedOwnedGallery": {
+    "route": "/assets",
+    "cards": 1,
+    "assetId": "5a2c67bd-81b6-4fcf-844e-2ce25a34e92c",
+    "overflow": false
+  },
+  "deployedDownload": {
+    "status": 200,
+    "bytes": 161876,
+    "sha256": "5a82e785e93f41f7d5effc20489d210b4b86869461099ce8be7abc7ad034380f"
+  },
+  "deployedPreview": {
+    "prompt": "Editorial product photograph of a small warm coral ceramic bottle on charcoal slate, soft side lighting, generous negative space, no text.",
+    "metadata": "ModelNano Banana 2Output512 \u00d7 512 \u00b7 1:1Resolution512 pxCreated24/10/2026, 09:51:01"
+  },
+  "deployedReload": true,
+  "deployedMobile": {
+    "width": 390,
+    "height": 844,
+    "overflow": false,
+    "badImages": 0
+  },
+  "deployedConsoleClean": true,
+  "deployedOtherUserEmpty": {
+    "http": 200,
+    "authenticated": true,
+    "assets": 0,
+    "cards": 0
+  },
+  "releaseChecks": {
+    "assetsClientChunks": 12,
+    "secretMatches": 0,
+    "captureCredentialMatches": 0,
+    "quota": {
+      "consumed": 15,
+      "global_limit": 20,
+      "remaining": 5
+    }
+  }
+}

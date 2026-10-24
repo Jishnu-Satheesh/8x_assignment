@@ -2,7 +2,7 @@
 
 A Higgsfield-inspired workspace with curated Explore discovery and a working Image Studio. It uses the assignment's graphite/coral design system, grouped navigation and responsive creation workspace.
 
-Explore and Image Studio are approved. Phase 2.1 adds real guest identities, persistent private images, background generation and reload recovery. The verified public app is [8x-assignment-ecru.vercel.app](https://8x-assignment-ecru.vercel.app). See [final QA](docs/FINAL_SPRINT_QA.md) for production evidence and limits.
+Explore, Image Studio and My Assets are approved. Phase 2.1 adds real guest identities, persistent private images, background generation and reload recovery. The verified public app is [8x-assignment-ecru.vercel.app](https://8x-assignment-ecru.vercel.app). See [final QA](docs/FINAL_SPRINT_QA.md) for production evidence and limits.
 
 ## Run locally
 
@@ -28,8 +28,9 @@ The [environment guide](docs/PHASE2_1_ENVIRONMENT.md) covers migrations, Auth, v
 - Generate with Nano Banana 2 (`gemini-3.1-flash-image`, default) or Nano Banana Pro (`gemini-3-pro-image`). Only supported ratios/resolutions are exposed.
 - Follow real queued/preparing/generating/saving stages, with Realtime and authenticated polling recovery.
 - Reload or navigate away and recover jobs/images. Inspect original metadata, download, regenerate with original settings or reuse an image as a reference.
+- Browse saved images in My Assets, open an accessible preview and download the original image.
 
-Guest ownership is tied to the browser's Supabase session. Clearing cookies or switching devices loses access; account linking/recovery is not implemented. Attributed source inspiration is distinguished from AI-generated images. A minimal My Assets gallery is implemented on `feat/minimal-assets` and awaits visual review/publication approval; see [Assets QA](docs/ASSETS_QA.md). Cinematic Studio and Brand DNA remain **Soon**.
+Guest ownership is tied to the browser's Supabase session. Clearing cookies or switching devices loses access; account linking/recovery is not implemented. Attributed source inspiration is distinguished from AI-generated images. [My Assets](https://8x-assignment-ecru.vercel.app/assets) provides a private responsive gallery, accessible previews, original metadata and downloads; see [Assets QA](docs/ASSETS_QA.md). Cinematic Studio and Brand DNA remain **Soon**.
 
 ## Architecture and safeguards
 
@@ -56,6 +57,7 @@ Do not routinely run `scripts/verify_image_models.mjs` or historical paid journe
 
 - `src/components/explore/`, `src/lib/inspiration.ts`: local discovery.
 - `src/components/studio/`, `src/app/api/image-studio/`: creation UX and authorized APIs.
+- `src/app/assets/`, `src/components/assets/`: private image library using those same APIs.
 - `src/lib/studio/durable/`, `src/trigger/generate-image.ts`: lifecycle, dispatch, persistence and guarded worker.
 - `src/lib/supabase/`, `src/proxy.ts`, `supabase/migrations/`: identity, cookie refresh, schema and policies.
 - [Design system](docs/DESIGN_SYSTEM.md), [source imagery](docs/ASSET_SOURCES.md), [Phase 1 QA](docs/PHASE1_QA.md), [Phase 2 QA](docs/PHASE2_QA.md), [sprint plan](docs/FINAL_SPRINT_PLAN.md).
