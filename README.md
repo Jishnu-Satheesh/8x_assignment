@@ -35,7 +35,7 @@ Guest ownership is tied to the browser's Supabase session. Clearing cookies or s
 
 Next.js authenticates/validates, atomically reserves PostgreSQL usage, creates a durable job and returns after Trigger dispatch. The focused `generate-image` task calls Gemini, validates the output, writes private Supabase Storage and finalizes its asset. Next.js does not wait for the paid operation or use a filesystem usage ledger.
 
-Owner RLS and verified sessions protect jobs/assets. Privileged credentials stay server-side. Images use authorized retrieval and temporary signed URLs. Public generation requires exact-origin protection, Turnstile, a verified Production worker and the database kill switch.
+Owner RLS and verified sessions protect jobs/assets. Privileged credentials stay server-side. Images use authorized retrieval and temporary signed URLs. Public generation requires exact HTTPS origin protection, a verified Production worker and the database kill switch. CAPTCHA is required by default; the candidate authorized temporary `STUDIO_CAPTCHA_MODE=disabled` while retaining database quotas and rate limits. Anonymous signup has no human challenge in that mode.
 
 The initial hard lifetime budget is **20 attempts**, including the nine-attempt legacy offset. Failed and uncertain requests remain counted. User, keyed-network, rate and concurrency limits also apply. No automatic reset or paid retry occurs. A worker crash before Storage can lose the returned output; recovery never replays an uncertain Gemini call. See the [environment guide](docs/PHASE2_1_ENVIRONMENT.md) for limits and reliability boundaries.
 
@@ -60,4 +60,4 @@ Do not routinely run `scripts/verify_image_models.mjs` or historical paid journe
 - `src/lib/supabase/`, `src/proxy.ts`, `supabase/migrations/`: identity, cookie refresh, schema and policies.
 - [Design system](docs/DESIGN_SYSTEM.md), [source imagery](docs/ASSET_SOURCES.md), [Phase 1 QA](docs/PHASE1_QA.md), [Phase 2 QA](docs/PHASE2_QA.md), [sprint plan](docs/FINAL_SPRINT_PLAN.md).
 
-Read `AGENTS.md` and `CAPTURE-TEST.md` before work. Capture remains automatic and raw entries must be preserved exactly. A previously pasted credential appears in raw capture, which is withheld until revocation; QA documents the integrity/publication conflict. `.vercelignore` excludes captures and secret files from deployment uploads without changing capture or Git tracking.
+Read `AGENTS.md` and `CAPTURE-TEST.md` before work. Capture remains automatic and raw entries must be preserved exactly. A previously pasted credential was withheld from publication until revocation; the old key now returns HTTP 401 and its replacement is absent from capture. The original record can be preserved without publishing a usable credential. QA documents the incident and verification. `.vercelignore` excludes captures and secret files from deployment uploads without changing capture or Git tracking.

@@ -38,6 +38,12 @@ export function configuration(): StudioAvailability {
       reason:
         "The durable workspace is being connected. Your existing layout is ready.",
     };
+  if (!localDevelopment() && !process.env.TRIGGER_SECRET_KEY?.startsWith("tr_prod_"))
+    return {
+      enabledModels,
+      available: false,
+      reason: "Public generation needs the Trigger production environment key.",
+    };
   if (!localDevelopment() && !publicProtectionReady())
     return {
       enabledModels,

@@ -16,6 +16,7 @@ The configured Supabase staging project is separate from the unrelated connected
 | `ABUSE_PROTECTION_SECRET` | Random server-side HMAC key | — | — | Never |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Build-time public site identifier | — | — | Yes |
 | `TURNSTILE_SECRET_KEY` | Server challenge verification | — | — | Never |
+| `STUDIO_CAPTCHA_MODE` | `required` by default; explicit owner-approved `disabled` for bounded assignment release | — | — | Never |
 | `STUDIO_LOCAL_DEVELOPMENT` | Explicit loopback-only exception | Local tooling | Enable-local guard | Never |
 | `STUDIO_WORKER_VERIFIED` | Production gate, default false | — | — | Never |
 
@@ -26,6 +27,8 @@ Run `rtk proxy node --env-file=.env.local scripts/studio-db.mjs dry-run`, then `
 Auth uses real anonymous Supabase identities and HttpOnly cookie sessions. Clearing cookies or changing devices loses access; account linking/recovery is outside this phase. Supabase Auth CAPTCHA must match the site's Turnstile configuration. For local-only staging verification, the owner may temporarily disable Auth CAPTCHA; public generation still fails closed without the public protections. A global PostgreSQL counter limits paid work independently of how many anonymous accounts exist. Reference uploads are bounded separately to 10/user and 100 globally, including pending uploads; uploaded references are decoded and normalized, never accepted as arbitrary paths or URLs.
 
 ## Before any public deployment
+
+**Final-sprint override, 24 October:** the candidate explicitly requested production CAPTCHA be disabled temporarily. `STUDIO_CAPTCHA_MODE=disabled` is the only production opt-out; missing Turnstile keys alone never enable it. This retains exact HTTPS origin checks, verified guest ownership, a Production Trigger key, the worker gate, private Storage and atomic global/user/network/rate/concurrency limits. The hard budget is not reset. Supabase Auth CAPTCHA must also remain disabled for this mode. Anonymous signup has no human challenge; retain Auth signup rate limits and treat this as a limited assignment release. Remove the opt-out and configure matching Turnstile keys/Auth protection to restore CAPTCHA. The generic `CAPTCHA` variable is unused.
 
 - Obtain explicit deployment authorization. No Vercel release, Trigger worker deployment, production enablement or merge is authorized by Phase 2.1.
 - Rotate/revoke the credential still present in the raw capture, update runtime secrets directly, and verify that every committed/pushed blob is safe. Preserve the raw records unchanged. Their publication is blocked while that credential remains usable.

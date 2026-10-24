@@ -94,12 +94,20 @@ export function uuid(value: unknown): string {
     );
   return value;
 }
+export function captchaRequired() {
+  // Explicit owner-controlled opt-out; never infer this from missing keys.
+  return process.env.STUDIO_CAPTCHA_MODE !== "disabled";
+}
 export function publicProtectionReady() {
+  const origin = process.env.STUDIO_ORIGIN;
+  try {
+    if (!origin || new URL(origin).protocol !== "https:" || new URL(origin).origin !== origin)
+      return false;
+  } catch { return false; }
   return Boolean(
-    process.env.STUDIO_ORIGIN &&
-      process.env.ABUSE_PROTECTION_SECRET &&
-      process.env.TURNSTILE_SECRET_KEY &&
-      process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY,
+    process.env.ABUSE_PROTECTION_SECRET &&
+      (!captchaRequired() ||
+        (process.env.TURNSTILE_SECRET_KEY && process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY)),
   );
 }
 export async function checkChallenge(token: unknown) {
@@ -117,6 +125,7 @@ export async function checkChallenge(token: unknown) {
       "Public generation is awaiting abuse-protection setup.",
       503,
     );
+  if (!captchaRequired()) return;
   if (typeof token !== "string" || !token || token.length > 2048)
     throw new StudioError(
       "CHALLENGE_REQUIRED",

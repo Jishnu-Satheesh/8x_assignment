@@ -5,6 +5,7 @@ import {
   localDevelopment,
 } from "@/lib/studio/durable/availability";
 import {
+  captchaRequired,
   errorResponse,
   object,
   privateHeaders,
@@ -60,7 +61,7 @@ export async function POST(request: Request) {
       value.challengeToken.length <= 2048
         ? value.challengeToken
         : undefined;
-    if (!localDevelopment() && !captchaToken)
+    if (!localDevelopment() && captchaRequired() && !captchaToken)
       throw new StudioError(
         "CHALLENGE_REQUIRED",
         "Complete the security check to start your workspace.",

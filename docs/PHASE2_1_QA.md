@@ -2,7 +2,7 @@
 
 Date: 23–24 October 2026. Branch: `feat/phase2-1-durable-generation`.
 
-**Result: implemented and verified locally against the designated hosted staging database and a connected Trigger development worker. Awaiting candidate visual approval. Public deployment is not qualified or authorized.**
+**Result: implemented and verified locally against the designated hosted staging database and a connected Trigger development worker. Candidate subsequently approved Phase 2.1. Final production qualification and its separate approval are tracked in [final sprint QA](FINAL_SPRINT_QA.md).**
 
 ## Verification actually performed
 
@@ -67,7 +67,7 @@ Before public enablement: configure and verify production Auth/CAPTCHA/rate limi
 
 ## Capture/security conflict
 
-The current raw capture contains the still-usable credential previously pasted by the candidate. The candidate explicitly authorized its continued use for local tests until deployment. The capture remains untouched and automatic logging continues, but this sensitive tracked log is intentionally **uncommitted and unpublished**. Committing it would violate the no-secrets requirement; redacting it would violate raw-capture integrity. Safe implementation commits therefore omit this log, and the deviation from 8x's interleaved-log requirement is recorded here. Rotation/revocation is required before publishing affected capture history. No clean transcript was fabricated.
+At local Phase 2.1 completion, raw capture contained a still-usable credential previously pasted by the candidate. Its continued local use was explicitly authorized until deployment. That tracked log was withheld from commits/publication: committing a usable credential would violate the no-secrets requirement, while redacting it would violate capture integrity. Safe implementation commits omitted it and recorded the deviation from interleaved logging. On 24 October the candidate revoked/replaced the key; a read-only check rejected the old key with HTTP 401 and accepted the replacement with HTTP 200. The replacement is absent from capture. Original entries remain untouched and can now accompany release commits. No clean transcript was fabricated.
 
 ## Screenshots and acceptance
 

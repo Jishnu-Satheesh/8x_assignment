@@ -18,6 +18,8 @@ Files in scope: `README.md`, `.vercelignore`, `.gitignore`, environment/release 
 
 ## Approval and configuration gates
 
+Update at 9:27 AM IST: candidate confirmed Gemini revocation/replacement, selected deployed Vercel project `8x-assignment`, and explicitly requested a production CAPTCHA opt-out. The old key was rejected with HTTP 401; its replacement is absent from captured entries. The canonical public domain is `https://8x-assignment-ecru.vercel.app`. Both feature PRs were merged into `main` by the candidate with original history preserved. The opt-out changes the existing protection helper/session route and focused tests; no dependencies or migrations. Other release gates remain in force.
+
 - Revoke the Gemini credential found in raw capture. Save a replacement directly in an ignored environment file; verify the old key is rejected without a paid generation. Preserve capture entries exactly.
 - Candidate chooses the Vercel project/hostname and provides Production Trigger and matching Turnstile configuration directly in ignored files.
 - Enable Supabase Auth CAPTCHA with the same Turnstile secret; verify anonymous sign-in rate limits. Production origin must be exact HTTPS; disable the local exception.
