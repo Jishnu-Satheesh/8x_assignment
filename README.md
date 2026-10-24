@@ -2,7 +2,7 @@
 
 A Higgsfield-inspired workspace with curated Explore discovery and a working Image Studio. It uses the assignment's graphite/coral design system, grouped navigation and responsive creation workspace.
 
-Explore and Image Studio are approved. Phase 2.1 adds real guest identities, persistent private images, background generation and reload recovery. Public release qualification is tracked in [final QA](docs/FINAL_SPRINT_QA.md); the public URL will be recorded after deployment verification.
+Explore and Image Studio are approved. Phase 2.1 adds real guest identities, persistent private images, background generation and reload recovery. The verified public app is [8x-assignment-ecru.vercel.app](https://8x-assignment-ecru.vercel.app). See [final QA](docs/FINAL_SPRINT_QA.md) for production evidence and limits.
 
 ## Run locally
 

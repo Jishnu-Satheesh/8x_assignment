@@ -1,0 +1,246 @@
+{
+  "origin": "https://8x-assignment-ecru.vercel.app",
+  "tool": "real Chrome DevTools MCP",
+  "publicAvailability": {
+    "status": 200,
+    "user": false,
+    "availability": {
+      "enabledModels": [
+        "gemini-3.1-flash-image",
+        "gemini-3-pro-image"
+      ],
+      "available": true
+    }
+  },
+  "guestSession": {
+    "status": 200,
+    "user": {
+      "id": "8d4129af-4723-49ac-b81a-75f400257015",
+      "anonymous": true
+    },
+    "scriptReadableCookieCount": 0
+  },
+  "initialHistory": {
+    "http": 200,
+    "jobs": [],
+    "assets": [],
+    "allowance": {
+      "remaining": 7,
+      "userLimit": 3
+    }
+  },
+  "paidSubmission": {
+    "requests": 1,
+    "settings": {
+      "model": "gemini-3.1-flash-image",
+      "resolution": "512",
+      "aspectRatio": "1:1"
+    },
+    "accepted": {
+      "http": 202,
+      "jobId": "5a2c67bd-81b6-4fcf-844e-2ce25a34e92c"
+    }
+  },
+  "activeState": {
+    "http": 200,
+    "jobs": [
+      {
+        "id": "5a2c67bd-81b6-4fcf-844e-2ce25a34e92c",
+        "status": "queued",
+        "runId": "run_06gmo8ttp4ljs4pumi51i52pa2",
+        "error": null
+      }
+    ],
+    "assets": [],
+    "allowance": {
+      "remaining": 6,
+      "userLimit": 3
+    }
+  },
+  "afterActiveReload": {
+    "http": 200,
+    "jobs": [
+      {
+        "id": "5a2c67bd-81b6-4fcf-844e-2ce25a34e92c",
+        "status": "generating",
+        "runId": "run_06gmo8ttp4ljs4pumi51i52pa2",
+        "error": null
+      }
+    ],
+    "assets": [],
+    "allowance": {
+      "remaining": 6,
+      "userLimit": 3
+    }
+  },
+  "latestState": {
+    "http": 200,
+    "jobs": [
+      {
+        "id": "5a2c67bd-81b6-4fcf-844e-2ce25a34e92c",
+        "status": "completed",
+        "runId": "run_06gmo8ttp4ljs4pumi51i52pa2",
+        "error": null,
+        "assetId": "5a2c67bd-81b6-4fcf-844e-2ce25a34e92c"
+      }
+    ],
+    "assets": [
+      {
+        "id": "5a2c67bd-81b6-4fcf-844e-2ce25a34e92c",
+        "model": "gemini-3.1-flash-image",
+        "width": 512,
+        "height": 512,
+        "source": "ai-generated"
+      }
+    ],
+    "allowance": {
+      "remaining": 6,
+      "userLimit": 3
+    }
+  },
+  "crossUserHttp": {
+    "jobs/5a2c67bd-81b6-4fcf-844e-2ce25a34e92c": 404,
+    "jobs/5a2c67bd-81b6-4fcf-844e-2ce25a34e92c/realtime-token": 404,
+    "assets/5a2c67bd-81b6-4fcf-844e-2ce25a34e92c/image": 404,
+    "assets/5a2c67bd-81b6-4fcf-844e-2ce25a34e92c/download": 404
+  },
+  "completedState": {
+    "http": 200,
+    "jobs": [
+      {
+        "id": "5a2c67bd-81b6-4fcf-844e-2ce25a34e92c",
+        "status": "completed",
+        "runId": "run_06gmo8ttp4ljs4pumi51i52pa2",
+        "error": null,
+        "assetId": "5a2c67bd-81b6-4fcf-844e-2ce25a34e92c"
+      }
+    ],
+    "assets": [
+      {
+        "id": "5a2c67bd-81b6-4fcf-844e-2ce25a34e92c",
+        "model": "gemini-3.1-flash-image",
+        "width": 512,
+        "height": 512,
+        "source": "ai-generated"
+      }
+    ],
+    "allowance": {
+      "remaining": 6,
+      "userLimit": 3
+    }
+  },
+  "desktop": {
+    "width": 1440,
+    "height": 900,
+    "overflow": false,
+    "badImages": 0,
+    "activeElement": "H2",
+    "controls": 400
+  },
+  "download": {
+    "status": 200,
+    "bytes": 161876,
+    "mediaType": "image/jpeg",
+    "disposition": "attachment; filename=\"8x-5a2c67bd-81b6-4fcf-844e-2ce25a34e92c.jpg\"",
+    "sha256": "5a82e785e93f41f7d5effc20489d210b4b86869461099ce8be7abc7ad034380f"
+  },
+  "keyboardMetadata": {
+    "open": true,
+    "prompt": "Editorial product photograph of a small warm coral ceramic bottle on charcoal slate, soft side lighting, generous negative space, no text.",
+    "metadata": "Provider modelgemini-3.1-flash-imageOutput1:1 \u00b7 512Created24/10/2026, 09:51:01"
+  },
+  "referenceReuse": {
+    "referenceVisible": true,
+    "description": "Generated imageAI-generated reference"
+  },
+  "mobile": {
+    "width": 390,
+    "height": 844,
+    "overflow": false,
+    "badImages": 0,
+    "imageCount": 2,
+    "controls": 390,
+    "completedActions": true
+  },
+  "mobileDrawer": {
+    "closed": true,
+    "focusLabel": "Open navigation"
+  },
+  "duplicateAndValidation": {
+    "duplicateStatus": 202,
+    "sameJobId": true,
+    "unsupportedStatus": 400,
+    "unsupportedCode": "UNSUPPORTED_SETTING",
+    "remainingBefore": 6,
+    "remainingAfter": 6
+  },
+  "realtimeTokenScope": {
+    "status": 200,
+    "scopes": [
+      "read:runs:run_06gmo8ttp4ljs4pumi51i52pa2"
+    ],
+    "expirySeconds": 300
+  },
+  "normalConsoleClean": true,
+  "realtimeHttp200Observed": true,
+  "exploreSearch": {
+    "results": 1,
+    "overflow": false
+  },
+  "explorePreview": {
+    "sourceLabel": true
+  },
+  "exploreKeyboard": {
+    "closed": true,
+    "focusRestored": true
+  },
+  "afterNavigation": {
+    "http": 200,
+    "jobs": [
+      {
+        "id": "5a2c67bd-81b6-4fcf-844e-2ce25a34e92c",
+        "status": "completed",
+        "runId": "run_06gmo8ttp4ljs4pumi51i52pa2",
+        "error": null,
+        "assetId": "5a2c67bd-81b6-4fcf-844e-2ce25a34e92c"
+      }
+    ],
+    "assets": [
+      {
+        "id": "5a2c67bd-81b6-4fcf-844e-2ce25a34e92c",
+        "model": "gemini-3.1-flash-image",
+        "width": 512,
+        "height": 512,
+        "source": "ai-generated"
+      }
+    ],
+    "allowance": {
+      "remaining": 6,
+      "userLimit": 3
+    }
+  },
+  "productionCookieAttributes": {
+    "httpOnly": true,
+    "secure": true,
+    "sameSiteLax": true
+  },
+  "productionWorker": {
+    "version": "20261024.1",
+    "task": "generate-image",
+    "realRunCount": 1
+  },
+  "privateStorage": {
+    "signedUrlImmediate": 200,
+    "signedUrlExpired": 400,
+    "publicObjectRead": 400
+  },
+  "publicClientSecretScan": {
+    "chunks": 11,
+    "matches": 0
+  },
+  "lifetimeQuota": {
+    "consumed": 14,
+    "limit": 20,
+    "remaining": 6
+  }
+}
