@@ -1,68 +1,63 @@
-# Higgsfield-inspired creative workspace
+# Creative workspace — 8x assignment
 
-Explore provides grouped navigation and a curated searchable collection. Image Studio adds real Gemini generation in a two-pane creative workspace. Phase 1 was approved; Phase 2 awaits candidate visual approval.
+A Higgsfield-inspired workspace with curated Explore discovery and a working Image Studio. It uses the assignment's graphite/coral design system, grouped navigation and responsive creation workspace.
+
+Explore and Image Studio are approved. Phase 2.1 adds real guest identities, persistent private images, background generation and reload recovery. Public release qualification is tracked in [final QA](docs/FINAL_SPRINT_QA.md); the public URL will be recorded after deployment verification.
 
 ## Run locally
 
-Use Node **22.18 or newer**. The verified environment uses Node 22.19.0 and npm 10.9.3. Explore needs no credentials. For Image Studio, put `GOOGLE_GENERATIVE_AI_API_KEY` directly in ignored `.env.local`; never paste it into agent chat. See `.env.example` for non-secret configuration names.
+Use Node **22.18 or newer**. Install pinned dependencies and put configuration directly in ignored `.env.local`, using `.env.example` for variable names. Never paste credentials into an agent conversation or commit an environment file.
 
 ```bash
 rtk proxy npm ci
 rtk proxy npm run dev
 ```
 
-Open [localhost:3000](http://localhost:3000).
+Open [localhost:3000](http://localhost:3000). Explore works without external services. Image Studio needs the configured Supabase project, Gemini key, Trigger Development key and connected development worker:
 
 ```bash
+rtk proxy npm run trigger:dev
+```
+
+The [environment guide](docs/PHASE2_1_ENVIRONMENT.md) covers migrations, Auth, variables and production gates. Migrations are in `supabase/migrations/`; use the intended hosted project and official migration workflow. Do not reset usage or repurpose another project's database.
+
+## What works
+
+- Search/filter inspiration and inspect style/source details.
+- Open a guest Image Studio, write a prompt and optionally upload a reference.
+- Generate with Nano Banana 2 (`gemini-3.1-flash-image`, default) or Nano Banana Pro (`gemini-3-pro-image`). Only supported ratios/resolutions are exposed.
+- Follow real queued/preparing/generating/saving stages, with Realtime and authenticated polling recovery.
+- Reload or navigate away and recover jobs/images. Inspect original metadata, download, regenerate with original settings or reuse an image as a reference.
+
+Guest ownership is tied to the browser's Supabase session. Clearing cookies or switching devices loses access; account linking/recovery is not implemented. Attributed source inspiration is distinguished from AI-generated images. Cinematic Studio, My Assets and Brand DNA remain **Soon** until separately implemented and approved.
+
+## Architecture and safeguards
+
+Next.js authenticates/validates, atomically reserves PostgreSQL usage, creates a durable job and returns after Trigger dispatch. The focused `generate-image` task calls Gemini, validates the output, writes private Supabase Storage and finalizes its asset. Next.js does not wait for the paid operation or use a filesystem usage ledger.
+
+Owner RLS and verified sessions protect jobs/assets. Privileged credentials stay server-side. Images use authorized retrieval and temporary signed URLs. Public generation requires exact-origin protection, Turnstile, a verified Production worker and the database kill switch.
+
+The initial hard lifetime budget is **20 attempts**, including the nine-attempt legacy offset. Failed and uncertain requests remain counted. User, keyed-network, rate and concurrency limits also apply. No automatic reset or paid retry occurs. A worker crash before Storage can lose the returned output; recovery never replays an uncertain Gemini call. See the [environment guide](docs/PHASE2_1_ENVIRONMENT.md) for limits and reliability boundaries.
+
+## Verification
+
+```bash
+rtk proxy npm test
 rtk proxy npm run typecheck
 rtk proxy npm run lint
-rtk proxy npm test
 rtk proxy npm run build
-rtk proxy npm run start
 ```
 
-The production build uses Next's supported Webpack option. In this managed environment, Turbopack's PostCSS worker cannot open its local port, including after escalation; Webpack builds successfully. Development uses the standard Next development server.
+Run build and typecheck sequentially. `rtk proxy npm run test:db` runs the hosted rollback SQL suite against the explicitly configured assignment database. Browser QA uses real Chrome DevTools MCP; an isolated headless bridge is available through `rtk proxy python3 scripts/chrome_mcp.py server` when the connected browser cannot launch.
 
-## Product boundaries
+Do not routinely run `scripts/verify_image_models.mjs` or historical paid journey scripts: they consume credits. Prior local evidence includes 38 tests, typecheck/lint/build, database isolation/quota checks and three real background generations. [Phase 2.1 QA](docs/PHASE2_1_QA.md) distinguishes development-worker evidence from production checks.
 
-Explore and Image Studio work. Cinematic Studio, My Assets, and Brand DNA remain **Soon**. Explore photographs are attributed source inspiration. Studio results are explicitly AI-generated; session history holds up to six images within a 32 MB data-URL budget and clears on reload or leaving Studio. Download images to keep them. No accounts, billing, asset library, Brand DNA, database, worker, video, or additional providers are implemented.
+## Project and submission evidence
 
-Studio defaults to Nano Banana 2 (`gemini-3.1-flash-image`) and also supports Nano Banana Pro (`gemini-3-pro-image`). Exact stable IDs passed real canaries; no preview aliases. Five supported aspect ratios are offered. Flash supports 512px/1K/2K/4K; Pro supports 1K/2K/4K. Higher resolutions were not used in QA. One image and one optional reference per request; references are decoded, bounded and normalized server-side. Regenerate uses the selected result's original settings/reference.
+- `src/components/explore/`, `src/lib/inspiration.ts`: local discovery.
+- `src/components/studio/`, `src/app/api/image-studio/`: creation UX and authorized APIs.
+- `src/lib/studio/durable/`, `src/trigger/generate-image.ts`: lifecycle, dispatch, persistence and guarded worker.
+- `src/lib/supabase/`, `src/proxy.ts`, `supabase/migrations/`: identity, cookie refresh, schema and policies.
+- [Design system](docs/DESIGN_SYSTEM.md), [source imagery](docs/ASSET_SOURCES.md), [Phase 1 QA](docs/PHASE1_QA.md), [Phase 2 QA](docs/PHASE2_QA.md), [sprint plan](docs/FINAL_SPRINT_PLAN.md).
 
-### Generation allowance and deployment
-
-Each installation has a hard maximum of **20 dispatched attempts**, including failures and unknown outcomes, recorded under ignored `.studio-data/usage.json`. The allowance does not reset automatically. Only one generation runs at a time, with at most three starts per minute and at least ten seconds between starts. Requests have unique IDs, output/token/byte bounds and a 120-second provider deadline. There are no automatic retries.
-
-Production generation fails closed unless `STUDIO_DURABLE_SINGLE_HOST=true` and an absolute `STUDIO_DATA_DIR` points to a persistent directory shared by all requests on **one Node host**. Preserve this ledger across releases/restarts. Configure exact `STUDIO_ORIGIN` behind a TLS reverse proxy. Vercel/AWS Lambda generation is disabled: a local file ledger is not a distributed/serverless safeguard. No public deployment is part of this assignment phase. A stale filesystem lock or corrupt ledger blocks generation; inspect pending jobs and reconcile with provider usage before an owner repairs it. Do not delete the ledger to silently reset spending.
-
-## Project map
-
-- `src/app/`: App Router entry points, preset CSS, semantic theme overrides, and shared responsive styles.
-- `src/components/ui/`: shadcn Radix Luma primitives, adapted to the supplied control dimensions and semantic overlays.
-- `src/components/workspace/`: desktop navigation and mobile drawer.
-- `src/components/explore/`: editorial entry, search/filter collection, robust images, and previews.
-- `src/lib/inspiration.ts`: the typed local collection and deterministic search/filter helper.
-- `src/components/studio/`, `src/lib/studio/`, `src/app/api/image-studio/`: the complete generation journey, contracts, direct AI SDK Google adapter, and durable safeguard.
-- `public/`: local source photographs, WOFF2 fonts, and font licenses.
-- [Design system](docs/DESIGN_SYSTEM.md), [implementation plan](docs/PHASE1_PLAN.md), [asset provenance](docs/ASSET_SOURCES.md), and [QA report](docs/PHASE1_QA.md).
-
-## Capture and browser verification
-
-Read `AGENTS.md` and `CAPTURE-TEST.md` before assignment work. Start new agent sessions through `scripts/codex-captured`. Keep `.agent-logs/` tracked, preserve captured entries verbatim, and commit the available logs alongside meaningful work.
-
-Browser QA uses the real Chrome DevTools MCP. The registered server's headful launch has no usable display in this managed session, so the QA bridge launches an isolated headless instance of the same MCP server. It forwards actual MCP tools; it does not simulate browser results.
-
-With the app running, start the bridge in a separate terminal and run the checks:
-
-```bash
-rtk proxy python3 scripts/chrome_mcp.py server
-```
-
-```bash
-rtk proxy python3 scripts/phase2_browser_qa.py --layout
-rtk proxy python3 scripts/phase2_browser_qa.py --regression
-```
-
-The Phase 2 script targets page 2 in the bridge and saves measurements to `docs/phase2-browser-results.json`. `--journey` spends three real generations; `--mobile-generation` spends one 512px generation. Do not rerun these as routine checks. `scripts/verify_image_models.mjs` is also an explicit paid test (one request per model), run with `node --env-file=.env.local`. It writes only safe metadata and ignored local image files. The [Phase 2 QA report](docs/PHASE2_QA.md) records actual calls and limitations.
-
-A credential was pasted into this conversation. Its automatic raw log remains untouched locally and must not be staged or pushed. The credential must be rotated; replacement values belong directly in `.env.local`. This exception is documented in `docs/PHASE2_PLAN.md` and the QA report; do not sanitize the original capture to make it publishable.
+Read `AGENTS.md` and `CAPTURE-TEST.md` before work. Capture remains automatic and raw entries must be preserved exactly. A previously pasted credential appears in raw capture, which is withheld until revocation; QA documents the integrity/publication conflict. `.vercelignore` excludes captures and secret files from deployment uploads without changing capture or Git tracking.

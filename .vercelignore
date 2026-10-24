@@ -1,0 +1,10 @@
+.agent-logs/
+.agent-capture-state/
+.studio-data/
+.superpowers/
+.superdesign/
+.trigger/
+.env*
+coverage/
+__pycache__/
+*.pyc
