@@ -82,8 +82,8 @@ export function InspirationCard({ item }: { item: Inspiration }) {
             </dl>
             <p className="preview-note">
               <strong>A direction to explore</strong>This is source photography
-              with creative notes, ready to spark an idea. Image generation
-              arrives with Image Studio in the next phase.
+              with creative notes, ready to spark an idea. Create your own image
+              in Image Studio; this photograph is not an AI-generated asset.
             </p>
             <p className="preview-credit">
               <span>Photography via Unsplash</span>

@@ -9,6 +9,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { InspirationImage } from "./inspiration-image";
+import Link from "next/link";
 
 export function EditorialHeader() {
   return (
@@ -61,7 +62,7 @@ export function EditorialHeader() {
             <p>A little inspiration goes a long way.</p>
           </div>
         </a>
-        <article className="intent-card">
+        <Link href="/image-studio" className="intent-card intent-discover">
           <span className="intent-icon">
             <ImagePlus aria-hidden="true" />
           </span>
@@ -70,11 +71,11 @@ export function EditorialHeader() {
             <div className="intent-meta">
               <p>Image Studio</p>
               <Badge variant="outline" className="intent-badge">
-                Next phase
+                Open studio
               </Badge>
             </div>
           </div>
-        </article>
+        </Link>
         <article className="intent-card">
           <span className="intent-icon">
             <Clapperboard aria-hidden="true" />

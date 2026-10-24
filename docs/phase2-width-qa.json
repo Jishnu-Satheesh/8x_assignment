@@ -1,0 +1,180 @@
+{
+  "tested_at": "2026-10-23T17:39:29.572892+00:00",
+  "tool": "real Chrome DevTools MCP",
+  "scope": "Studio width revision; no generation requests",
+  "checks": [
+    {
+      "check": "1920x1080: full workspace, wider controls and no overflow",
+      "passed": true,
+      "evidence": {
+        "viewport": 1920,
+        "available": 1848,
+        "studio": 1848,
+        "controls": 400,
+        "viewer": 1448,
+        "overflow": false,
+        "captionHeight": 16,
+        "generateVisible": true,
+        "badImages": 0,
+        "modelDescriptionHeights": [
+          16,
+          16
+        ]
+      }
+    },
+    {
+      "check": "1920x1080: Generate remains visible",
+      "passed": true,
+      "evidence": true
+    },
+    {
+      "check": "1920: supporting copy fits without squeezing",
+      "passed": true,
+      "evidence": {
+        "viewport": 1920,
+        "available": 1848,
+        "studio": 1848,
+        "controls": 400,
+        "viewer": 1448,
+        "overflow": false,
+        "captionHeight": 16,
+        "generateVisible": true,
+        "badImages": 0,
+        "modelDescriptionHeights": [
+          16,
+          16
+        ]
+      }
+    },
+    {
+      "check": "1920x1080: no console warnings/errors",
+      "passed": true,
+      "evidence": "Emulating viewport: {\"deviceScaleFactor\":1,\"isMobile\":false,\"hasTouch\":false,\"isLandscape\":false,\"width\":1920,\"height\":1080}\n## Console messages\n<no console messages found>"
+    },
+    {
+      "check": "1440x900: full workspace, wider controls and no overflow",
+      "passed": true,
+      "evidence": {
+        "viewport": 1440,
+        "available": 1368,
+        "studio": 1368,
+        "controls": 400,
+        "viewer": 968,
+        "overflow": false,
+        "captionHeight": 16,
+        "generateVisible": true,
+        "badImages": 0,
+        "modelDescriptionHeights": [
+          16,
+          16
+        ]
+      }
+    },
+    {
+      "check": "1440x900: Generate remains visible",
+      "passed": true,
+      "evidence": true
+    },
+    {
+      "check": "1440x900: no console warnings/errors",
+      "passed": true,
+      "evidence": "Emulating viewport: {\"deviceScaleFactor\":1,\"isMobile\":false,\"hasTouch\":false,\"isLandscape\":false,\"width\":1440,\"height\":900}\n## Console messages\n<no console messages found>"
+    },
+    {
+      "check": "1024x768: full workspace, wider controls and no overflow",
+      "passed": true,
+      "evidence": {
+        "viewport": 1024,
+        "available": 952,
+        "studio": 952,
+        "controls": 360,
+        "viewer": 592,
+        "overflow": false,
+        "captionHeight": 16,
+        "generateVisible": true,
+        "badImages": 0,
+        "modelDescriptionHeights": [
+          16,
+          16
+        ]
+      }
+    },
+    {
+      "check": "1024x768: Generate remains visible",
+      "passed": true,
+      "evidence": true
+    },
+    {
+      "check": "1024: expanded navigation keeps workspace within viewport",
+      "passed": true,
+      "evidence": {
+        "rail": 252,
+        "overflow": false,
+        "studio": 772,
+        "available": 772
+      }
+    },
+    {
+      "check": "1024x768: no console warnings/errors",
+      "passed": true,
+      "evidence": "Emulating viewport: {\"deviceScaleFactor\":1,\"isMobile\":false,\"hasTouch\":false,\"isLandscape\":false,\"width\":1024,\"height\":768}\n## Console messages\n<no console messages found>"
+    },
+    {
+      "check": "768x1024: full workspace, wider controls and no overflow",
+      "passed": true,
+      "evidence": {
+        "viewport": 768,
+        "available": 768,
+        "studio": 768,
+        "controls": 360,
+        "viewer": 408,
+        "overflow": false,
+        "captionHeight": 16,
+        "generateVisible": true,
+        "badImages": 0,
+        "modelDescriptionHeights": [
+          16,
+          16
+        ]
+      }
+    },
+    {
+      "check": "768x1024: no console warnings/errors",
+      "passed": true,
+      "evidence": "Emulating viewport: {\"deviceScaleFactor\":1,\"isMobile\":true,\"hasTouch\":true,\"isLandscape\":false,\"width\":768,\"height\":1024}\n## Console messages\n<no console messages found>"
+    },
+    {
+      "check": "390x844: full workspace, wider controls and no overflow",
+      "passed": true,
+      "evidence": {
+        "viewport": 390,
+        "available": 390,
+        "studio": 390,
+        "controls": 390,
+        "viewer": 390,
+        "overflow": false,
+        "captionHeight": 16,
+        "generateVisible": false,
+        "badImages": 0,
+        "modelDescriptionHeights": [
+          16,
+          16
+        ]
+      }
+    },
+    {
+      "check": "390x844: no console warnings/errors",
+      "passed": true,
+      "evidence": "Emulating viewport: {\"deviceScaleFactor\":1,\"isMobile\":true,\"hasTouch\":true,\"isLandscape\":false,\"width\":390,\"height\":844}\n## Console messages\n<no console messages found>"
+    },
+    {
+      "check": "Explore retains its editorial content width",
+      "passed": true,
+      "evidence": {
+        "maxWidth": "1480px",
+        "width": 1480,
+        "overflow": false
+      }
+    }
+  ]
+}

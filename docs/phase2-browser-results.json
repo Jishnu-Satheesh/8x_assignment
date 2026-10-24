@@ -1,0 +1,388 @@
+{
+  "tool": "real Chrome DevTools MCP / headless Chrome",
+  "checks": [
+    {
+      "check": "1440x900: responsive panes, active route, default model and no overflow",
+      "passed": true,
+      "evidence": {
+        "overflow": false,
+        "rail": 72,
+        "controls": 336,
+        "layout": "grid",
+        "generateBottom": 836,
+        "headline": "36px",
+        "selected": "gemini-3.1-flash-image",
+        "active": [
+          "Image Studio"
+        ],
+        "badImages": 0
+      }
+    },
+    {
+      "check": "1440x900: Generate visible",
+      "passed": true,
+      "evidence": 836
+    },
+    {
+      "check": "1440x900: rail expansion",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "1024x768: responsive panes, active route, default model and no overflow",
+      "passed": true,
+      "evidence": {
+        "overflow": false,
+        "rail": 72,
+        "controls": 336,
+        "layout": "grid",
+        "generateBottom": 704,
+        "headline": "36px",
+        "selected": "gemini-3.1-flash-image",
+        "active": [
+          "Image Studio"
+        ],
+        "badImages": 0
+      }
+    },
+    {
+      "check": "1024x768: Generate visible",
+      "passed": true,
+      "evidence": 704
+    },
+    {
+      "check": "1024x768: rail expansion",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "768x1024: responsive panes, active route, default model and no overflow",
+      "passed": true,
+      "evidence": {
+        "overflow": false,
+        "rail": 0,
+        "controls": 336,
+        "layout": "grid",
+        "generateBottom": 960,
+        "headline": "36px",
+        "selected": "gemini-3.1-flash-image",
+        "active": [
+          "Image Studio"
+        ],
+        "badImages": 0
+      }
+    },
+    {
+      "check": "768x1024: drawer grouping and focus",
+      "passed": true,
+      "evidence": {
+        "width": 280,
+        "active": "Image Studio",
+        "disabled": 3,
+        "focus": true
+      }
+    },
+    {
+      "check": "768x1024: drawer Tab stays inside",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "768x1024: Escape restores focus",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "390x844: responsive panes, active route, default model and no overflow",
+      "passed": true,
+      "evidence": {
+        "overflow": false,
+        "rail": 0,
+        "controls": 390,
+        "layout": "flex",
+        "generateBottom": 947,
+        "headline": "28px",
+        "selected": "gemini-3.1-flash-image",
+        "active": [
+          "Image Studio"
+        ],
+        "badImages": 0
+      }
+    },
+    {
+      "check": "390x844: drawer grouping and focus",
+      "passed": true,
+      "evidence": {
+        "width": 280,
+        "active": "Image Studio",
+        "disabled": 3,
+        "focus": true
+      }
+    },
+    {
+      "check": "390x844: drawer Tab stays inside",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "390x844: Escape restores focus",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "Blank prompt validation and focus",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "Pro removes unsupported 512px setting",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "Layout interactions have no console errors or warnings",
+      "passed": true,
+      "evidence": "Emulating viewport: {\"deviceScaleFactor\":1,\"isMobile\":false,\"hasTouch\":false,\"isLandscape\":false,\"width\":1440,\"height\":900}\n## Console messages\n<no console messages found>"
+    },
+    {
+      "check": "Upload preview and explicit source label",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "Prompt editor retains entered text",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "Processing state disables duplicate submission",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "Nano Banana 2 image renders",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "Nano Banana 2 exact model and reference generation",
+      "passed": true,
+      "evidence": {
+        "id": "5b805967-7e93-426c-a8c2-dd82042fe385",
+        "jobId": "120be805-886a-44be-86a5-a8ebbd74b97d",
+        "model": "gemini-3.1-flash-image",
+        "providerModel": "gemini-3.1-flash-image",
+        "width": 512,
+        "height": 512,
+        "mediaType": "image/jpeg",
+        "source": "ai-generated",
+        "referenceAsset": null
+      }
+    },
+    {
+      "check": "Download action dispatched for Nano Banana 2",
+      "passed": true,
+      "evidence": "Successfully clicked on the element\nEmulating viewport: {\"deviceScaleFactor\":1,\"isMobile\":false,\"hasTouch\":false,\"isLandscape\":false,\"width\":1440,\"height\":900}"
+    },
+    {
+      "check": "Use as reference adds generated lineage and focuses prompt",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "Pro image renders and session history has two",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "Nano Banana Pro exact model and generated-reference lineage",
+      "passed": true,
+      "evidence": {
+        "id": "92a293ea-a687-4512-b8ed-97fd8ace2b7c",
+        "jobId": "cf3bb929-c478-4db6-9fed-118c3fdc1794",
+        "model": "gemini-3-pro-image",
+        "providerModel": "gemini-3-pro-image",
+        "width": 1024,
+        "height": 1024,
+        "mediaType": "image/jpeg",
+        "source": "ai-generated",
+        "referenceAsset": "5b805967-7e93-426c-a8c2-dd82042fe385"
+      }
+    },
+    {
+      "check": "Download action dispatched for Pro",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "Regenerate produces a third real image",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "Regenerate preserves original prompt, model, settings and reference",
+      "passed": true,
+      "evidence": {
+        "requests": [
+          {
+            "requestId": "120be805-886a-44be-86a5-a8ebbd74b97d",
+            "model": "gemini-3.1-flash-image",
+            "aspectRatio": "1:1",
+            "resolution": "512",
+            "reference": true,
+            "referenceAsset": null,
+            "prompt": "Create a minimal studio photograph of a coral ceramic sphere on a graphite pedestal, a soft blue background, no text."
+          },
+          {
+            "requestId": "cf3bb929-c478-4db6-9fed-118c3fdc1794",
+            "model": "gemini-3-pro-image",
+            "aspectRatio": "1:1",
+            "resolution": "1K",
+            "reference": true,
+            "referenceAsset": "5b805967-7e93-426c-a8c2-dd82042fe385",
+            "prompt": "Keep the sphere and pedestal composition, change the sphere to warm amber ceramic and the background to dark graphite. No text."
+          },
+          {
+            "requestId": "604219b4-2ba2-4766-8a8a-4b410a77fdda",
+            "model": "gemini-3-pro-image",
+            "aspectRatio": "1:1",
+            "resolution": "1K",
+            "reference": true,
+            "referenceAsset": "5b805967-7e93-426c-a8c2-dd82042fe385",
+            "prompt": "Keep the sphere and pedestal composition, change the sphere to warm amber ceramic and the background to dark graphite. No text."
+          }
+        ],
+        "outputs": [
+          {
+            "id": "5b805967-7e93-426c-a8c2-dd82042fe385",
+            "jobId": "120be805-886a-44be-86a5-a8ebbd74b97d",
+            "model": "gemini-3.1-flash-image",
+            "providerModel": "gemini-3.1-flash-image",
+            "width": 512,
+            "height": 512,
+            "mediaType": "image/jpeg",
+            "source": "ai-generated",
+            "referenceAsset": null
+          },
+          {
+            "id": "92a293ea-a687-4512-b8ed-97fd8ace2b7c",
+            "jobId": "cf3bb929-c478-4db6-9fed-118c3fdc1794",
+            "model": "gemini-3-pro-image",
+            "providerModel": "gemini-3-pro-image",
+            "width": 1024,
+            "height": 1024,
+            "mediaType": "image/jpeg",
+            "source": "ai-generated",
+            "referenceAsset": "5b805967-7e93-426c-a8c2-dd82042fe385"
+          },
+          {
+            "id": "c5ad6f8f-4eea-4174-b10f-d31f37ad382d",
+            "jobId": "604219b4-2ba2-4766-8a8a-4b410a77fdda",
+            "model": "gemini-3-pro-image",
+            "providerModel": "gemini-3-pro-image",
+            "width": 1024,
+            "height": 1024,
+            "mediaType": "image/jpeg",
+            "source": "ai-generated",
+            "referenceAsset": "5b805967-7e93-426c-a8c2-dd82042fe385"
+          }
+        ]
+      }
+    },
+    {
+      "check": "History selection changes viewer",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "Mobile result fits viewport with loaded output and actions",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "Real generation journey has no console errors/warnings",
+      "passed": true,
+      "evidence": "Emulating viewport: {\"deviceScaleFactor\":1,\"isMobile\":true,\"hasTouch\":true,\"isLandscape\":false,\"width\":390,\"height\":844}\nEmulating prefers-reduced-motion: reduce\n## Console messages\n<no console messages found>"
+    },
+    {
+      "check": "Explore returns to expanded grouped navigation",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "Explore search and filter still intersect",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "Explore preview remains source inspiration",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "Explore preview Escape restores focus",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "Reentering Studio collapses rail and clears transient history",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "Server rejects unsupported models/settings and corrupt reference",
+      "passed": true,
+      "evidence": [
+        {
+          "status": 400,
+          "code": "INVALID_MODEL",
+          "message": "Choose an available image model."
+        },
+        {
+          "status": 400,
+          "code": "UNSUPPORTED_SETTING",
+          "message": "Choose an aspect ratio and resolution supported by this model."
+        },
+        {
+          "status": 400,
+          "code": "UNSUPPORTED_SETTING",
+          "message": "This request contains an unsupported setting."
+        },
+        {
+          "status": 400,
+          "code": "INVALID_REFERENCE",
+          "message": "The reference could not be read. Choose a valid PNG, JPEG, or WebP image."
+        }
+      ]
+    },
+    {
+      "check": "Corrupt upload returns a clear UI error without provider generation",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "Offline failure explains credit uncertainty and allows recovery",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "check": "Actual downloads match server asset bytes",
+      "passed": true,
+      "evidence": [
+        {
+          "file": "8x-gemini-3.1-flash-image-5b805967-7e93-426c-a8c2-dd82042fe385.jpg",
+          "bytes": 117744,
+          "matches_server_asset": true,
+          "jpeg": true
+        },
+        {
+          "file": "8x-gemini-3-pro-image-92a293ea-a687-4512-b8ed-97fd8ace2b7c.jpg",
+          "bytes": 460011,
+          "matches_server_asset": true,
+          "jpeg": true
+        }
+      ]
+    }
+  ],
+  "tested_at": "2026-10-23T17:14:20.671326+00:00"
+}

@@ -1,0 +1,30 @@
+{
+  "checkedAt": "2026-10-23T16:39:39.183Z",
+  "provider": "google",
+  "results": [
+    {
+      "model": "gemini-3.1-flash-image",
+      "resolution": "512",
+      "aspectRatio": "1:1",
+      "passed": true,
+      "sent": 1,
+      "bytes": 148846,
+      "mediaType": "image/jpeg",
+      "sha256": "c2b64cc208b3e148efe85a7f17d67eb4544d64bb2cf842b6d59c91383acff426",
+      "elapsedMs": 25988,
+      "warnings": []
+    },
+    {
+      "model": "gemini-3-pro-image",
+      "resolution": "1K",
+      "aspectRatio": "1:1",
+      "passed": true,
+      "sent": 1,
+      "bytes": 665113,
+      "mediaType": "image/jpeg",
+      "sha256": "94716d2d3931258825581a5b1fac21f9996669ebfcc8be575a1467bcddc93d3b",
+      "elapsedMs": 26147,
+      "warnings": []
+    }
+  ]
+}

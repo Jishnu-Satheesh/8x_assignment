@@ -2,6 +2,7 @@
 
 import { useEffect, useState, type ReactNode } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   Aperture,
   ChevronRight,
@@ -31,20 +32,20 @@ import {
 const groups = [
   {
     name: "Discover",
-    items: [{ name: "Explore", icon: Compass, available: true }],
+    items: [{ name: "Explore", icon: Compass, href: "/" }],
   },
   {
     name: "Create",
     items: [
-      { name: "Image Studio", icon: ImagePlus, available: false },
-      { name: "Cinematic Studio", icon: Film, available: false },
+      { name: "Image Studio", icon: ImagePlus, href: "/image-studio" },
+      { name: "Cinematic Studio", icon: Film, href: null },
     ],
   },
   {
     name: "Workspace",
     items: [
-      { name: "My Assets", icon: FolderClosed, available: false },
-      { name: "Brand DNA", icon: Fingerprint, available: false },
+      { name: "My Assets", icon: FolderClosed, href: null },
+      { name: "Brand DNA", icon: Fingerprint, href: null },
     ],
   },
 ];
@@ -60,26 +61,27 @@ function Brand() {
 
 function Navigation({
   collapsed = false,
-  onExplore,
+  onNavigate,
 }: {
   collapsed?: boolean;
-  onExplore?: () => void;
+  onNavigate?: () => void;
 }) {
+  const pathname = usePathname();
   return (
     <nav className="workspace-nav" aria-label="Main navigation">
       {groups.map((group) => (
         <section className="nav-group" key={group.name} aria-label={group.name}>
           <h2 className="nav-group-title">{group.name}</h2>
-          {group.items.map(({ name, icon: Icon, available }) => (
+          {group.items.map(({ name, icon: Icon, href }) => (
             <Tooltip key={name}>
               <TooltipTrigger asChild>
-                {available ? (
+                {href ? (
                   <Link
                     className="nav-item"
-                    href="/"
-                    aria-current="page"
-                    aria-label="Explore"
-                    onClick={onExplore}
+                    href={href}
+                    aria-current={pathname === href ? "page" : undefined}
+                    aria-label={name}
+                    onClick={onNavigate}
                   >
                     <Icon aria-hidden="true" />
                     <span className="nav-label">{name}</span>
@@ -107,7 +109,7 @@ function Navigation({
               </TooltipTrigger>
               <TooltipContent side="right">
                 {name}
-                {available ? "" : " · Coming soon"}
+                {href ? "" : " · Coming soon"}
               </TooltipContent>
             </Tooltip>
           ))}
@@ -118,7 +120,13 @@ function Navigation({
 }
 
 export function WorkspaceShell({ children }: { children: ReactNode }) {
-  const [collapsed, setCollapsed] = useState(false);
+  const pathname = usePathname();
+  const studio = pathname === "/image-studio";
+  // Route defaults are derived during render: no expanded-rail flash on entry.
+  const [preference, setPreference] = useState<{ path: string; collapsed: boolean } | null>(null);
+  const [lastPath, setLastPath] = useState(pathname);
+  if (lastPath !== pathname) { setLastPath(pathname); setPreference(null); }
+  const collapsed = preference?.path === pathname ? preference.collapsed : studio;
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
@@ -131,7 +139,7 @@ export function WorkspaceShell({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <div className="workspace-shell" data-collapsed={collapsed}>
+    <div className="workspace-shell" data-collapsed={collapsed} data-workspace={studio ? "studio" : "explore"}>
       <a href="#main-content" className="skip-link">
         Skip to content
       </a>
@@ -152,7 +160,7 @@ export function WorkspaceShell({ children }: { children: ReactNode }) {
                 aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
                 aria-expanded={!collapsed}
                 aria-controls="desktop-navigation"
-                onClick={() => setCollapsed(!collapsed)}
+                onClick={() => setPreference({ path: pathname, collapsed: !collapsed })}
               >
                 {collapsed ? (
                   <PanelLeftOpen aria-hidden="true" />
@@ -187,10 +195,10 @@ export function WorkspaceShell({ children }: { children: ReactNode }) {
                   Workspace navigation
                 </SheetTitle>
                 <SheetDescription className="sr-only">
-                  Explore is available. The other destinations are coming soon.
+                  Explore and Image Studio are available. Other destinations are coming soon.
                 </SheetDescription>
                 <Brand />
-                <Navigation onExplore={() => setMobileOpen(false)} />
+                <Navigation onNavigate={() => setMobileOpen(false)} />
                 <p className="sidebar-note">
                   A little room for big ideas.
                   <span>Explore today. More soon.</span>
@@ -204,11 +212,11 @@ export function WorkspaceShell({ children }: { children: ReactNode }) {
             <p className="breadcrumb">
               <span>Workspace</span>
               <ChevronRight aria-hidden="true" />
-              <strong>Explore</strong>
+              <strong>{studio ? "Image Studio" : "Explore"}</strong>
             </p>
           </div>
           <span className="preview-status">
-            <span className="status-long">Discovery </span>preview
+            {studio ? "Image workspace" : <><span className="status-long">Discovery </span>preview</>}
           </span>
         </header>
         <main id="main-content" tabIndex={-1}>
