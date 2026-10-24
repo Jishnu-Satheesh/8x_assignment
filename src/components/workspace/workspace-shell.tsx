@@ -44,7 +44,7 @@ const groups = [
   {
     name: "Workspace",
     items: [
-      { name: "My Assets", icon: FolderClosed, href: null },
+      { name: "My Assets", icon: FolderClosed, href: "/assets" },
       { name: "Brand DNA", icon: Fingerprint, href: null },
     ],
   },
@@ -122,6 +122,7 @@ function Navigation({
 export function WorkspaceShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const studio = pathname === "/image-studio";
+  const assets = pathname === "/assets";
   // Route defaults are derived during render: no expanded-rail flash on entry.
   const [preference, setPreference] = useState<{ path: string; collapsed: boolean } | null>(null);
   const [lastPath, setLastPath] = useState(pathname);
@@ -139,7 +140,7 @@ export function WorkspaceShell({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <div className="workspace-shell" data-collapsed={collapsed} data-workspace={studio ? "studio" : "explore"}>
+    <div className="workspace-shell" data-collapsed={collapsed} data-workspace={studio ? "studio" : assets ? "assets" : "explore"}>
       <a href="#main-content" className="skip-link">
         Skip to content
       </a>
@@ -195,7 +196,7 @@ export function WorkspaceShell({ children }: { children: ReactNode }) {
                   Workspace navigation
                 </SheetTitle>
                 <SheetDescription className="sr-only">
-                  Explore and Image Studio are available. Other destinations are coming soon.
+                  Explore, Image Studio and My Assets are available. Other destinations are coming soon.
                 </SheetDescription>
                 <Brand />
                 <Navigation onNavigate={() => setMobileOpen(false)} />
@@ -212,11 +213,11 @@ export function WorkspaceShell({ children }: { children: ReactNode }) {
             <p className="breadcrumb">
               <span>Workspace</span>
               <ChevronRight aria-hidden="true" />
-              <strong>{studio ? "Image Studio" : "Explore"}</strong>
+              <strong>{studio ? "Image Studio" : assets ? "My Assets" : "Explore"}</strong>
             </p>
           </div>
           <span className="preview-status">
-            {studio ? "Image workspace" : <><span className="status-long">Discovery </span>preview</>}
+            {studio ? "Image workspace" : assets ? "Private image library" : <><span className="status-long">Discovery </span>preview</>}
           </span>
         </header>
         <main id="main-content" tabIndex={-1}>

@@ -1,0 +1,124 @@
+{
+  "origin": "http://localhost:3000",
+  "tool": "real Chrome DevTools MCP",
+  "realOwnedAsset": {
+    "ownerId": "8d4129af-4723-49ac-b81a-75f400257015",
+    "assetIds": [
+      "5a2c67bd-81b6-4fcf-844e-2ce25a34e92c"
+    ],
+    "source": "ai-generated"
+  },
+  "desktopGallery": {
+    "width": 1440,
+    "height": 900,
+    "cards": 1,
+    "overflow": false,
+    "brokenImages": 0,
+    "activeNav": "My Assets",
+    "sidebarWidth": 252
+  },
+  "previewMetadata": {
+    "open": true,
+    "prompt": "Editorial product photograph of a small warm coral ceramic bottle on charcoal slate, soft side lighting, generous negative space, no text.",
+    "metadata": "ModelNano Banana 2Output512 \u00d7 512 \u00b7 1:1Resolution512 pxCreated24/10/2026, 09:51:01",
+    "aiLabel": true
+  },
+  "download": {
+    "status": 200,
+    "bytes": 161876,
+    "sha256": "5a82e785e93f41f7d5effc20489d210b4b86869461099ce8be7abc7ad034380f"
+  },
+  "keyboardFocus": {
+    "closed": true,
+    "restored": true
+  },
+  "loadingState": {
+    "busy": true,
+    "skeletons": 3,
+    "refreshDisabled": true
+  },
+  "reloadRecovery": {
+    "cards": 1,
+    "assetId": "5a2c67bd-81b6-4fcf-844e-2ce25a34e92c"
+  },
+  "layout1024": {
+    "width": 1024,
+    "height": 768,
+    "overflow": false,
+    "cards": 1,
+    "columns": "342px 342px"
+  },
+  "layout768": {
+    "width": 768,
+    "height": 1024,
+    "overflow": false,
+    "cards": 1,
+    "columns": "348px 348px"
+  },
+  "layout390": {
+    "width": 390,
+    "height": 844,
+    "overflow": false,
+    "cards": 1,
+    "columns": "358px"
+  },
+  "mobileNavigation": {
+    "active": "My Assets",
+    "focusInside": true
+  },
+  "mobilePreview": {
+    "width": 358,
+    "height": 812,
+    "overflow": false,
+    "dialogScrollTop": 0,
+    "closeTop": 33,
+    "closeVisible": true,
+    "focus": "Download image"
+  },
+  "mockedLibraryFailure": {
+    "title": "Your library is unavailable.",
+    "error": "Your images could not be reached. Please try again."
+  },
+  "libraryRetryRecovered": true,
+  "imageFailureFallback": true,
+  "imageRetryRecovered": true,
+  "mockedDownloadFailure": "Your image could not be downloaded. Please reconnect and try again.",
+  "downloadRetryRecovered": true,
+  "guestState": {
+    "title": "Your images have a place to land.",
+    "cards": 0
+  },
+  "realAuthenticatedEmpty": {
+    "realAnonymousUser": true,
+    "title": "Your first image starts with an idea.",
+    "cards": 0,
+    "overflow": false
+  },
+  "emptyStudioLink": true,
+  "studioNavigation": {
+    "route": "/image-studio",
+    "rail": 72,
+    "savedImageVisible": true
+  },
+  "assetsNavigation": {
+    "route": "/assets",
+    "rail": 252,
+    "active": "My Assets"
+  },
+  "exploreRegression": {
+    "results": 1,
+    "overflow": false
+  },
+  "normalConsoleClean": true,
+  "finalGallery": {
+    "cards": 1,
+    "brokenImages": 0,
+    "overflow": false
+  },
+  "generationUsage": {
+    "lifetimeConsumed": 14,
+    "limit": 20,
+    "remaining": 6,
+    "additionalPaidCalls": 0
+  }
+}

@@ -29,7 +29,7 @@ The [environment guide](docs/PHASE2_1_ENVIRONMENT.md) covers migrations, Auth, v
 - Follow real queued/preparing/generating/saving stages, with Realtime and authenticated polling recovery.
 - Reload or navigate away and recover jobs/images. Inspect original metadata, download, regenerate with original settings or reuse an image as a reference.
 
-Guest ownership is tied to the browser's Supabase session. Clearing cookies or switching devices loses access; account linking/recovery is not implemented. Attributed source inspiration is distinguished from AI-generated images. Cinematic Studio, My Assets and Brand DNA remain **Soon** until separately implemented and approved.
+Guest ownership is tied to the browser's Supabase session. Clearing cookies or switching devices loses access; account linking/recovery is not implemented. Attributed source inspiration is distinguished from AI-generated images. A minimal My Assets gallery is implemented on `feat/minimal-assets` and awaits visual review/publication approval; see [Assets QA](docs/ASSETS_QA.md). Cinematic Studio and Brand DNA remain **Soon**.
 
 ## Architecture and safeguards
 

@@ -28,5 +28,5 @@ export async function proxy(request: NextRequest) {
   return response;
 }
 export const config = {
-  matcher: ["/image-studio", "/api/image-studio/:path*"],
+  matcher: ["/image-studio", "/assets", "/api/image-studio/:path*"],
 };
